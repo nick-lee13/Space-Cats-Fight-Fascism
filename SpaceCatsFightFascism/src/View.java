@@ -1,37 +1,26 @@
-import javafx.application.Application; 
-import javafx.scene.Group; 
-import javafx.scene.Scene; 
-import javafx.scene.shape.Line; 
-import javafx.stage.Stage;  
-
-public class View extends Application{ 
-   @Override 
-   public void start(Stage stage) { 
-      //Creating a line object 
-      Line line = new Line(); 
-         
-      //Setting the properties to a line 
-      line.setStartX(100.0); 
-      line.setStartY(150.0); 
-      line.setEndX(500.0); 
-      line.setEndY(150.0); 
-         
-      //Creating a Group 
-      Group root = new Group(line); 
-         
-      //Creating a Scene 
-      Scene scene = new Scene(root, 600, 300); 
-         
-      //Setting title to the scene 
-      stage.setTitle("Sample application"); 
-         
-      //Adding the scene to the stage 
-      stage.setScene(scene); 
-         
-      //Displaying the contents of a scene 
-      stage.show(); 
-   }      
-   public static void main(String args[]){ 
-      launch(args); 
-   } 
-} 
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
+public class View extends Application {
+    @Override
+    public void start(Stage primaryStage)
+    {
+        StackPane root = new StackPane();
+        Scene scene = new Scene(root, 1200, 650);
+        Image img = new Image("https://cf.geekdo-images.com/luzMc4Fu5CY3dSavElurxA__imagepagezoom/img/SXmC9JOVZH6U9LCfIBFQ41Ogbbg=/fit-in/1200x900/filters:no_upscale():strip_icc()/pic4105088.jpg");
+        BackgroundImage bImg = new BackgroundImage(img,
+                                                   BackgroundRepeat.NO_REPEAT,
+                                                   BackgroundRepeat.NO_REPEAT,
+                                                   BackgroundPosition.DEFAULT,
+                                                   BackgroundSize.DEFAULT);
+        Background bGround = new Background(bImg);
+        root.setBackground(bGround);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
