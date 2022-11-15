@@ -8,6 +8,6 @@ public abstract class Card {
         return name;
     }
 
-    public abstract LinkedList<Card> GetActions();
+    protected abstract LinkedList<Card> GetActions();
 
 }
