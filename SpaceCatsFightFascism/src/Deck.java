@@ -11,4 +11,8 @@ public class Deck {
     public void RemoveCard(Card inCard){
         cards.remove(inCard);
     }
+
+    public LinkedList<Card> GetCards(){
+        return cards;
+    }
 }
