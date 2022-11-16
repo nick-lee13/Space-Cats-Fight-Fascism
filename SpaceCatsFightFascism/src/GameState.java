@@ -30,6 +30,9 @@ public class GameState {
 
         setPlanetLayout();
 
+        //honestly i made the below method because i didnt want a bunch of if statements in the setplanetlayout method
+        setPlanetSymbols();
+
         diceRollCount = STARTING_DICE;
 
         //edit below for when it is not restricted
@@ -52,7 +55,7 @@ public class GameState {
         occupiedFlagsUsed = 0;
 
         FascistTokenCount = 0;
-        initTokens(FascistTokenCount);
+        initTokens();
         
 
         playerTurn = 1;
@@ -108,6 +111,13 @@ public class GameState {
                 //(With appropriate cases if scratches < 2... etc...)
             }
         }*/
+
+        ResistCard liberation = new Card();
+        ResistCard heal1 = new Card();
+        ResistCard heal2 = new Card();
+        ResistCard fascist2 = new Card();
+        ResistCard teleport = new Card();
+        ResistCard 
     }
 
     //initializes the galaxy news deck
@@ -230,6 +240,22 @@ public class GameState {
         catRoster = cats;
     }
 
+    //I just know everyone will love this method as much as I do
+    private void setPlanetSymbols()
+    {
+        findPlanet(1).setSymbol("Teeth");
+        findPlanet(5).setSymbol("Teeth");
+        findPlanet(9).setSymbol("Teeth");
+        findPlanet(2).setSymbol("Whiskers");
+        findPlanet(6).setSymbol("Whiskers");
+        findPlanet(10).setSymbol("Whiskers");
+        findPlanet(3).setSymbol("Paw");
+        findPlanet(7).setSymbol("Paw");
+        findPlanet(11).setSymbol("Paw");
+        findPlanet(4).setSymbol("Tail");
+        findPlanet(8).setSymbol("Tail");
+        findPlanet(12).setSymbol("Tail");
+    }
 
     //i HATE how i made this method
     //creates a new planet layout

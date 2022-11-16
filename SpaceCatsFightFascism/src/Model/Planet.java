@@ -1,10 +1,13 @@
 public class Planet {
     int id;
     int tokenCount;
+    String symbol;
 
     public Planet(int inId, int inTokenCount) {
             id = inId;
             tokenCount = inTokenCount;
+            //might change this to input a symbol in construction at some point
+            symbol = null
     }
 
     public boolean isLiberated() {
@@ -23,6 +26,11 @@ public class Planet {
 
     public void setTokenCount(int inToken) {
         tokenCount = inToken;
+    }
+
+    public void setSymbol(String inSymbol)
+    {
+        symbol = inSymbol;
     }
     
 }
