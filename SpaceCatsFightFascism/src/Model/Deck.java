@@ -10,15 +10,15 @@ public class Deck {
         this.shuffle();
     }
 
-    public void AddCard(Card inCard) { // Removes the given card from a deck
+    public void addCard(Card inCard) { // Removes the given card from a deck
         cards.add(inCard);
     }
 
-    public void RemoveCard(Card inCard) { // Removes the given card from the deck
+    public void removeCard(Card inCard) { // Removes the given card from the deck
         cards.remove(inCard);
     }
 
-    public LinkedList<Card> GetCards() { // Returns a list of cards in deck
+    public LinkedList<Card> getCards() { // Returns a list of cards in deck
         return cards;
     }
 
