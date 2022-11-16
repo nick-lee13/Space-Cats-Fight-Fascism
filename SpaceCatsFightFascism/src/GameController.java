@@ -52,4 +52,8 @@ class GameController {
     public void playCard() {
 
     }
+
+    public void startGame() {
+        
+    }
 }
