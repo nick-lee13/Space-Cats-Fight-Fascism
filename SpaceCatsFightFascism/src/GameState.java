@@ -30,8 +30,6 @@ public class GameState {
 
         setPlanetLayout();
 
-        resistDeck = new Deck();
-        
         diceRollCount = STARTING_DICE;
 
         //edit below for when it is not restricted
@@ -43,10 +41,10 @@ public class GameState {
         }
         //edit above for when it is not restricted
 
-        catRoster = new Cat[];
-        initCatRoster();
-        
-        galaxyNewsDeck = new Deck();
+        catRoster = initCatRoster();
+
+        resistDeck = initResistDeck();
+        galaxyNewsDeck = initGalaxyNewsDeck();
         resistUsedDeck = new Deck();
         galaxyNewsUsedDeck = new Deck();
 
@@ -75,6 +73,34 @@ public class GameState {
         int current_token = planet.getTokenCount();
         planet.setTokenCount(current_token - 1);
         fascistTokenCount++;
+    }
+
+    //initializes the roster of cats available for the game
+    private Cat[] initCatRoster()
+    {
+        roster = new Cat[4];
+
+        aliasSC = new Cat("Alias:SC", 3, /*ABILITY CARD HERE*/);
+        pip = new Cat("Pip", 8, /*ABILITY CARD HERE*/);
+        jasper = new Cat("Jasper", 6, /*ABILITY CARD HERE*/);
+        ophelia = new Cat("Ophelia", 4, /*ABILITY CARD HERE*/);
+
+        roster[0] = aliasSC;
+        roster[1] = pip;
+        roster[2] = jasper;
+        roster[3] = ophelia;
+    }
+
+    //initializes the resist card deck
+    private Deck initResistDeck()
+    {
+
+    }
+
+    //initializes the galaxy news deck
+    private Deck initGalaxyNewsDeck()
+    {
+
     }
 
     //Initialize the starting tokens at the start of the game
