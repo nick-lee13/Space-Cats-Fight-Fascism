@@ -3,26 +3,26 @@ import java.util.*;
 //Class GameState, reflecting the current state of the game at the current turn in the model.
 public class GameState {
 
-    int DEFAULT_PLAYERS = 2;
-    int DEFAULT_DIFFICULTY = 1;
-    int STARTING_DICE = 2;
-    int STARTING_TOKENS = 6;
+    private int DEFAULT_PLAYERS = 2;
+    private int DEFAULT_DIFFICULTY = 1;
+    private int STARTING_DICE = 2;
+    private int STARTING_TOKENS = 6;
     
-    Player[] players;
-    Cat[] catRoster;
-    Planet[][] planetLayout;
+    private Player[] players;
+    private Cat[] catRoster;
+    private Planet[][] planetLayout;
 
-    Deck resistDeck;
-    Deck resistUsedDeck;
-    Deck galaxyNewsDeck;
-    Deck galaxyNewsUsedDeck;
+    private Deck resistDeck;
+    private Deck resistUsedDeck;
+    private Deck galaxyNewsDeck;
+    private Deck galaxyNewsUsedDeck;
 
-    int fascismScale;
-    int playerTurn;
-    int liberatedFlagsUsed;
-    int occupiedFlagsUsed;
-    int fascistTokenCount;
-    int diceRollCount;
+    private int fascismScale;
+    private int playerTurn;
+    private int liberatedFlagsUsed;
+    private int occupiedFlagsUsed;
+    private int fascistTokenCount;
+    private int diceRollCount;
 
     //Initializes a new GameState, to be edited at the start of the game.
     public GameState()
