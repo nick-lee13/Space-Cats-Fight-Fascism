@@ -54,7 +54,8 @@ class GameController {
 
     // Shuffles the decks using their discard piles
     public void shuffleDecks() {
-
+        gameState.replaceResistDeck();
+        gameState.replaceGalaxyNewsDeck();
     }
 
     // Shuffles the planet layout
@@ -87,11 +88,11 @@ class GameController {
 
     }
 
-    public GameState getGameState() {
-        return gameState;
-    }
-
     public void startGame() {
         
+    }
+
+    public GameState getGameState() {
+        return gameState;
     }
 }
