@@ -1,17 +1,12 @@
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -62,10 +57,9 @@ public class GameScreen extends Application {
         return rect;
     }
 
-    private void drawPlanets(){
+    /*private void drawPlanets(){
         //drawPlanetCards()
         //drawTokens()
         //place cats
-
-    }
+    }*/
 }

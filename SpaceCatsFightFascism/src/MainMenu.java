@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -23,7 +22,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.*;
 
-public class ViewTest extends Application{
+public class MainMenu extends Application{
 	
 	private Parent createContent() {
 		Pane root = new Pane();
