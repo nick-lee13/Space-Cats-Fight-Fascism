@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 
 public class DisplayUpdater extends Application {
 
+    Rectangle[][] planetIcons;
+    Planet[][] planetLayout;
+
+
     @Override
     public void start(Stage stage){
 
@@ -20,30 +24,23 @@ public class DisplayUpdater extends Application {
         root.getChildren().add(gameElements.getBackgroundImage("res/game_bg.jpg"));
 
 
+        //Menu
         root.getChildren().addAll(drawRectangle(840,0,210,600), drawRectangle(0, 450, 1050, 150));
         
         //Draw Planets
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 4; j++){
-                root.getChildren().add(drawRectangle(60+(j*190), 105+(i*110), 150, 80));
-            }
-        }
+        root.getChildren().addAll(gameElements.drawPlanets(planetLayout));
 
         Buttons b = new Buttons();
         root.getChildren().addAll(b.createPlayerButtons());
-        root.getChildren().add(updateCatDisplay());
 
         stage.setScene(scene);
         stage.show();
     }
 
     //update cat locations
-    public Circle updateCatDisplay(){
-        //GET CATS AND THEIR LOCATIONS HERE
-        Circle cat = new Circle(80+190,165,18,Color.RED);
-        return cat;
+    /*public Circle drawCat(Cat cat){
 
-    }
+    }*/
 
     //update token counts
     /*public void tokenDisplay(Planet[][]){
@@ -65,5 +62,9 @@ public class DisplayUpdater extends Application {
         rect.setFill(Color.LIGHTBLUE);
 
         return rect;
+    }
+
+    public void setPlanetLayout(Planet[][] layout){
+        planetLayout = layout;
     }
 }

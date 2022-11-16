@@ -7,7 +7,7 @@ public class Planet {
             id = inId;
             tokenCount = inTokenCount;
             //might change this to input a symbol in construction at some point
-            symbol = null
+            symbol = null;
     }
 
     public boolean isLiberated() {

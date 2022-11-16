@@ -10,6 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Line;
@@ -33,8 +34,20 @@ public class ViewElements {
 		}
     }
 
-	public Rectangle[] drawPlanets(){
-		return null;
+	public Rectangle[] drawPlanets(Planet[][] planetLayout){
+		Rectangle[] planetIcons = new Rectangle[12];
+		int count = 0;
+		for(int i = 0; i < 3; i++){
+			for(int j = 0; j < 4; j++){
+				Rectangle rect = new Rectangle(60+(j*190), 105+(i*110), 150, 80);
+				//rect.setFill(new ImagePattern(planetLayout[i][j].getImage()));
+				rect.setFill(Color.LIGHTBLUE);
+				planetIcons[count] = rect;
+				count++;
+			}
+		}
+
+		return planetIcons;
 	}
 
     public Title getTitle(String titleText){
