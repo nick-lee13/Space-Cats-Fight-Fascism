@@ -1,7 +1,10 @@
+import javafx.scene.image.Image;
+
 public class Planet {
     int id;
     int tokenCount;
     String symbol;
+    Image img;
 
     public Planet(int inId, int inTokenCount) {
             id = inId;
@@ -37,5 +40,12 @@ public class Planet {
     {
         return symbol;
     }
-    
+
+    public void setImage(String path){
+        img = new Image(path);
+    }
+
+    public Image getImage(){
+        return img;
+    }
 }
