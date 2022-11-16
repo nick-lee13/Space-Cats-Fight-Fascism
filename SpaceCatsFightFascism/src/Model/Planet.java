@@ -32,5 +32,10 @@ public class Planet {
     {
         symbol = inSymbol;
     }
+
+    public String getSymbol()
+    {
+        return symbol;
+    }
     
 }

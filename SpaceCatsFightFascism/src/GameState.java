@@ -24,6 +24,8 @@ public class GameState {
     private int fascistTokenCount;
     private int diceRollCount;
 
+    ResistCard liberation, heal1, heal2, fascist2, teleport, whiskersymbol, earsymbol, tailsymbol, pawsymbol;
+
     //Initializes a new GameState, to be edited at the start of the game.
     public GameState()
     {
@@ -111,14 +113,236 @@ public class GameState {
                 //(With appropriate cases if scratches < 2... etc...)
             }
         }*/
+        Deck outDeck = new Deck();
 
-        ResistCard liberation = new Card();
-        ResistCard heal1 = new Card();
-        ResistCard heal2 = new Card();
-        ResistCard fascist2 = new Card();
-        ResistCard teleport = new Card();
-        ResistCard 
+        ResistCard liberation = new Card("+1 Liberation");
+        ResistCard heal1 = new Card("Heal 1");
+        ResistCard heal2 = new Card("Heal 2");
+        ResistCard fascist2 = new Card("-2 Fascists");
+        ResistCard teleport = new Card("Teleport");
+        //consider making a SymbolCard extending ResistCard as these below ones have duplicate code
+        ResistCard whiskersymbol = new Card("Whisker Liberation");
+        ResistCard earsymbol = new Card("Ear Liberation");
+        ResistCard tailsymbol = new Card("Tail Liberation");
+        ResistCard pawsymbol = new Card("Paw Liberation");
+        
+        //A lot of the else statements here are creating duplicate cards due to the playcard method, so I will have to figure out a cleaner way to do the used piles
+        liberation.playAction = new CardAction(){
+            public void action(){
+            Planet currPlanet = liberation.owner.getCat().getPlanet();
+            if( currPlanet.getTokens() < 0)
+            {
+                //ADD ERROR MESSAGE HERE
+                liberation.owner.getDeck().addCard(liberation);
+            }
+            else
+            {
+                liberation.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 1);
+            }
+             
+        }
+        };
+
+        heal1.playAction = new CardAction(){
+            public void action(){
+                int currScratches = heal1.owner.getCat().getScratchCount();
+                if(currScratches > 0)
+                {
+                    heal1.owner.getCat().setScratchCount(currScratches - 1);
+                }
+                else
+                {
+                    //ADD ERROR MESSAGE HERE
+                    heal1.owner.getDeck().addCard(heal1);
+                }
+            }
+        };
+
+        heal2.playAction = new CardAction(){
+            public void action(){
+                int currScratches = heal1.owner.getCat().getScratchCount();
+                if(currScratches > 0)
+                {
+                    //quality if statement
+                    if(currScratches - 2 < 0)
+                    {
+                        heal2.owner.getCat().setScratchCount(currScratches - 1);
+                    }
+                    else
+                    {
+                        heal1.owner.getCat().setScratchCount(currScratches - 2);
+                    }
+                }
+                else
+                {
+                    //ADD ERROR MESSAGE HERE
+                    heal1.owner.getDeck().addCard(heal1);
+                }
+            }
+        };
+
+        fascist2.playAction = new CardAction(){
+            public void action(){
+                Planet currPlanet = fascist2.owner.getCat().getPlanet();
+                if(currPlanet.getTokenCount() < 0)
+                {
+                    if(currPlanet.getTokenCount() + 2 > 0)
+                    {
+                        fascist2.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 1);
+                    }
+                    else
+                    {
+                        fascist2.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 2);
+                    }
+                }
+                else
+                {
+                    //ADD ERROR MESSAGE HERE
+                    fascist2.owner.getDeck().addCard(fascist2);
+                }
+            }
+        };
+
+        teleport.playAction = new CardAction(){
+            public void action(){
+                //Add message prompting selection of desired planet
+                Planet inputPlanet = teleport.owner.getCat().getPlanet();
+                //REMOVE THE ABOVE ONCE IT ACTUALLY NEEDS TO BE FUNCTIONAL
+                teleport.owner.getCat().setPlanet(inputPlanet);
+            }
+        };
+
+        whiskersymbol.playAction = new CardAction(){
+            public void action(){
+                currPlanet = whiskersymbol.owner.getCat().getPlanet();
+                if(currPlanet.getSymbol() = "Whiskers")
+                {
+                    if(currPlanet.getTokenCount() >= 0)
+                    {
+                        whiskersymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 2);
+                    }
+                    else
+                    {
+                        //ADD ERROR MESSAGE HERE
+                        whiskersymbol.owner.addCard(whiskersymbol);
+                    }
+                }
+                else
+                {
+                    //ADD ERROR MESSAGE HERE
+                    whiskersymbol.owner.addCard(whiskersymbol);
+                }
+            }
+        };
+
+        earsymbol.playAction = new CardAction(){
+            public void action(){
+                currPlanet = earsymbol.owner.getCat().getPlanet();
+                if(currPlanet.getSymbol() = "Ears")
+                {
+                    if(currPlanet.getTokenCount() >= 0)
+                    {
+                        earsymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 2);
+                    }
+                    else
+                    {
+                        //ADD ERROR MESSAGE HERE
+                        earsymbol.owner.addCard(earsymbol);
+                    }
+                }
+                else
+                {
+                    //ADD ERROR MESSAGE HERE
+                    earsymbol.owner.addCard(earsymbol);
+                }
+            }
+        };
+
+        tailsymbol.playAction = new CardAction(){
+            public void action(){
+                currPlanet = tailsymbol.owner.getCat().getPlanet();
+                if(currPlanet.getSymbol() = "Tail")
+                {
+                    if(currPlanet.getTokenCount() >= 0)
+                    {
+                        tailsymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 2);
+                    }
+                    else
+                    {
+                        //ADD ERROR MESSAGE HERE
+                        tailsymbol.owner.addCard(tailsymbol);
+                    }
+                }
+                else
+                {
+                    //ADD ERROR MESSAGE HERE
+                    tailsymbol.owner.addCard(tailsymbol);
+                }
+            }
+        };
+
+        pawsymbol.playAction = new CardAction(){
+            public void action(){
+                currPlanet = pawsymbol.owner.getCat().getPlanet();
+                if(currPlanet.getSymbol() = "Paw")
+                {
+                    if(currPlanet.getTokenCount() >= 0)
+                    {
+                        pawsymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 2);
+                    }
+                    else
+                    {
+                        //ADD ERROR MESSAGE HERE
+                        pawsymbol.owner.addCard(pawsymbol);
+                    }
+                }
+                else
+                {
+                    //ADD ERROR MESSAGE HERE
+                    pawsymbol.owner.addCard(pawsymbol);
+                }
+            }
+        };
+        
+        //honestly i should come up with better ways to add cards
+        int n = 8;
+        while(n > 0)
+        {
+            outDeck.addCard(liberation);
+        }
+        n = 6;
+        while(n > 0)
+        {
+            outDeck.addCard(heal1);
+        }
+        n = 4;
+        while(n > 0)
+        {
+            outDeck.addCard(heal2);
+        }
+        n = 5;
+        while(n > 0)
+        {
+            outDeck.addCard(fascist2);
+        }
+        n = 3;
+        while(n > 0)
+        {
+            outDeck.addCard(teleport);
+        }
+        n = 5;
+        while(n > 0)
+        {
+            outDeck.addCard(whiskersymbol);
+            outDeck.addCard(pawsymbol);
+            outDeck.addCard(tailsymbol);
+            outDeck.addCard(earsymbol);
+        }
+        outDeck.shuffle();
+
+        return outDeck;
     }
+    
 
     //initializes the galaxy news deck
     private Deck initGalaxyNewsDeck()
@@ -175,6 +399,9 @@ public class GameState {
         resistDeck = resistUsedDeck;
         resistUsedDeck = new Deck();
     }
+
+    //You may ask: "Cameron, whats the point of making the local variables private if the getters return the variable anyways?"
+    //and to that I say: i guess i like creating overhead for myself once functionality relies on this quirk
 
     public Player[] getPlayers()
     {
@@ -243,9 +470,9 @@ public class GameState {
     //I just know everyone will love this method as much as I do
     private void setPlanetSymbols()
     {
-        findPlanet(1).setSymbol("Teeth");
-        findPlanet(5).setSymbol("Teeth");
-        findPlanet(9).setSymbol("Teeth");
+        findPlanet(1).setSymbol("Ears");
+        findPlanet(5).setSymbol("Ears");
+        findPlanet(9).setSymbol("Ears");
         findPlanet(2).setSymbol("Whiskers");
         findPlanet(6).setSymbol("Whiskers");
         findPlanet(10).setSymbol("Whiskers");

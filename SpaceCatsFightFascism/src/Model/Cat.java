@@ -50,7 +50,7 @@ public class Cat {
         scratchCount = inScracthCount;
     }
 
-    public void setPLanet(Planet inPlanet){
+    public void setPlanet(Planet inPlanet){
         planet = inPlanet;
     }
 
