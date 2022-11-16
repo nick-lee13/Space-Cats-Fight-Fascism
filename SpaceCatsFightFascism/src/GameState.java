@@ -123,6 +123,11 @@ public class GameState {
         return catRoster;
     }
 
+    public int getFascismScale()
+    {
+        return fascismScale;
+    }
+
     public Planet[][] getPlanetLayout()
     {
         return planetLayout;
