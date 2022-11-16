@@ -10,11 +10,11 @@ public class MainMenu extends Application{
 		
 		root.setPrefSize(1050, 600);
 		
-		MenuItems menuElements = new MenuItems();
+		ViewElements menuElements = new ViewElements();
 
 		//Main Menu
 		root.getChildren().add(menuElements.getBackgroundImage());
-		root.getChildren().add(menuElements.getTitle("N E W   G A M E"));
+		root.getChildren().add(menuElements.getTitle("D I F F I C U L T Y"));
 		root.getChildren().add(menuElements.getMenu(1));
 		
 		return root;

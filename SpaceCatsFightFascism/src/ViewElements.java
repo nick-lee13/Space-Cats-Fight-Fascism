@@ -18,10 +18,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class MenuItems {
+public class ViewElements {
 
-    public ImageView getBackgroundImage(){
-        try(InputStream is = Files.newInputStream(Paths.get("SpaceCatsFightFascism/res/title_bg.jpg"))){
+    public ImageView getBackgroundImage(String path){
+        try(InputStream is = Files.newInputStream(Paths.get(path))){
 			ImageView img = new ImageView(new Image(is));
 			img.setFitWidth(1050);
 			img.setFitHeight(600);
@@ -32,6 +32,10 @@ public class MenuItems {
             return null;
 		}
     }
+
+	public Rectangle[] drawPlanets(){
+		return null;
+	}
 
     public Title getTitle(String titleText){
         Title title = new Title (titleText);
@@ -99,7 +103,7 @@ public class MenuItems {
 		
 	}
 
-    private static class MenuItem extends StackPane{
+    private class MenuItem extends StackPane{
 		public MenuItem(String name) {
 			LinearGradient gradient = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, new Stop[] { 
 				new Stop(0, Color.ORANGE),
@@ -130,7 +134,7 @@ public class MenuItems {
 			});
 			setOnMousePressed(event -> {
 				bg.setFill(Color.ORANGE);
-				
+				getClickEvent(name);
 			});
 			
 			setOnMouseReleased(event -> {
@@ -139,4 +143,13 @@ public class MenuItems {
 			
 			}
 		}
+
+        private void getClickEvent(String name){
+            if(name.equals("2 PLAYER")){
+
+            }
+            else if(name.equals("PLAYFUL KITTENS")){
+
+            }
+        }
 }
