@@ -19,11 +19,10 @@ public class GameState {
 
     int fascismScale;
     int playerTurn;
-    int[] liberatedFlagsUsed;
+    int liberatedFlagsUsed;
+    int occupiedFlagsUsed;
     int fascistTokenCount;
     int diceRollCount;
-
-    //Scanner playerInput = new Scanner(System.in);
 
     //Initializes a new GameState, to be edited at the start of the game.
     public GameState()
@@ -37,26 +36,25 @@ public class GameState {
 
         //edit below for when it is not restricted
         fascismScale = DEFAULT_DIFFICULTY;
-        players = DEFAULT_PLAYERS;
+        players = new Player[DEFAULT_PLAYERS]
+        for(int i = 0, i < players.length; i++)
+        {
+            players[0]
+        }
         //edit above for when it is not restricted
 
-        /*for(int i = 1; i < players + 1; i++)
-        {
-            System.out.println("Player " + i + ", input your desired cat from the list below:");
-            System.out.println("1: Alias:SC, 2: Jasper, 3: Ophelia, 4: Pip");
-            
-        }*/
-
+        catRoster = new Cat[];
+        initCatRoster();
         
         galaxyNewsDeck = new Deck();
         resistUsedDeck = new Deck();
         galaxyNewsUsedDeck = new Deck();
 
-        
+        liberatedFlagsUsed = 0;
+        occupiedFlagsUsed = 0;
 
-        liberatedFlagsUsed = new int[];
-
-        FascistTokenCount = players.size + STARTING_TOKENS;
+        FascistTokenCount = 0;
+        initTokens(FascistTokenCount);
         
 
         playerTurn = 1;
@@ -64,11 +62,55 @@ public class GameState {
     }
 
     //places a token on the inputted planet id, increments amount of tokens
-    public void placeToken(int id)
+    public void placeLibToken(Planet planet)
     {
+        int current_token = planet.getTokenCount();
+        planet.setTokenCount(current_token + 1);
+        FascistTokenCount--;
+    }
 
+    //Places a fascist token at the given planet.
+    public void placeFascistToken(Planet planet)
+    {
+        int current_token = planet.getTokenCount();
+        planet.setTokenCount(current_token - 1);
         FascistTokenCount++;
+    }
 
+    //Initialize the starting tokens at the start of the game
+    private void initTokens()
+    {
+        Player[] roster = this.getPlayers();
+        
+        for(int i = 0; i < roster.length; i++)
+        {
+            int id = roster[i].getCat().getHomePlanet();
+            homePlanet = findPlanet(id);
+            placeFascistToken(homePlanet);
+        }
+        placeFascistToken(findPlanet(2));
+        placeFascistToken(findPlanet(4));
+        placeFascistToken(findPlanet(6));
+        placeFascistToken(findPlanet(8));
+        placeFascistToken(findPlanet(10));
+        placeFascistToken(findPlanet(12));
+    }
+
+    //Helper function to return a planet given a planet ID by searching through the planet layout.
+    private Planet findPlanet(int id)
+    {
+        for(int i = 0; i < planetLayout.length; i++)
+        {
+            for(int j = 0; j < planetLayout[].length; j++)
+            {
+                currPlanet = planetLayout[i][j];
+                if(currPlanet.getID() == id)
+                {
+                    return currPlanet;
+                }
+            }
+        }
+        return null;
     }
 
     public Player[] getPlayers()
