@@ -28,7 +28,7 @@ public class GameState {
     public GameState()
     {
 
-        planetLayout = setPlanetLayout();
+        setPlanetLayout();
 
         resistDeck = new Deck();
         
@@ -66,7 +66,7 @@ public class GameState {
     {
         int current_token = planet.getTokenCount();
         planet.setTokenCount(current_token + 1);
-        FascistTokenCount--;
+        fascistTokenCount--;
     }
 
     //Places a fascist token at the given planet.
@@ -74,7 +74,7 @@ public class GameState {
     {
         int current_token = planet.getTokenCount();
         planet.setTokenCount(current_token - 1);
-        FascistTokenCount++;
+        fascistTokenCount++;
     }
 
     //Initialize the starting tokens at the start of the game
@@ -85,7 +85,7 @@ public class GameState {
         for(int i = 0; i < roster.length; i++)
         {
             int id = roster[i].getCat().getHomePlanet();
-            homePlanet = findPlanet(id);
+            Planet homePlanet = findPlanet(id);
             placeFascistToken(homePlanet);
         }
         placeFascistToken(findPlanet(2));
@@ -103,7 +103,7 @@ public class GameState {
         {
             for(int j = 0; j < planetLayout[].length; j++)
             {
-                currPlanet = planetLayout[i][j];
+                Planet currPlanet = planetLayout[i][j];
                 if(currPlanet.getID() == id)
                 {
                     return currPlanet;
