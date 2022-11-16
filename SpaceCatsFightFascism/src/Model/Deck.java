@@ -7,6 +7,7 @@ public class Deck {
 
     public Deck() { // Deck Constructor
             // Body
+        this.shuffle();
     }
 
     public void AddCard(Card inCard) { // Removes the given card from a deck
@@ -21,7 +22,7 @@ public class Deck {
         return cards;
     }
 
-    public void Shuffle() { // Shuffles the cards in the deck
+    public void shuffle() { // Shuffles the cards in the deck
         Collections.shuffle(cards);
     }
 }
