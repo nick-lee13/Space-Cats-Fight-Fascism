@@ -96,13 +96,15 @@ public class GameState {
     //initializes the resist card deck
     private Deck initResistDeck()
     {
-
+        //INITIALIZE ALL CARDS HERE, MAKE SURE TO GIVE EACH ONE AN ACTION IN THEIR cardAction VARIABLE
+        //DONT FORGET THIS I STG
+        //make sure to check the counts of each cards in the doc
     }
 
     //initializes the galaxy news deck
     private Deck initGalaxyNewsDeck()
     {
-
+        //same as above method buddy
     }
 
     //Initialize the starting tokens at the start of the game
