@@ -5,7 +5,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -39,7 +42,8 @@ public class GameScreen extends Application {
             }
         }
 
-        //root.getChildren().add(0, root);
+        Buttons b = new Buttons();
+        root.getChildren().addAll(b.createPlayerButtons());
 
         stage.setScene(scene);
         stage.show();
@@ -63,9 +67,5 @@ public class GameScreen extends Application {
         //drawTokens()
         //place cats
 
-    }
-
-    private void playerButtons(){
-        
     }
 }

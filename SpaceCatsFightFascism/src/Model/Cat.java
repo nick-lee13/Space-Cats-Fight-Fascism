@@ -1,12 +1,12 @@
 public class Cat {
 
     private String name;
-    private Planet homePlanet;
+    private int homePlanet;
     private AbilityCard ability;
     private Planet planet;
     private int scratchCount = 1; // I've set anything requiring a getter to be a private variable
 
-    public Cat(String inName, Planet inHomePlanet, AbilityCard inAbility) { // Constructor does not include planet and scratch count 
+    public Cat(String inName, int inHomePlanet, AbilityCard inAbility) { // Constructor does not include planet and scratch count 
                                                                             // since they are informed by the players actions.
             name = inName;
             homePlanet= inHomePlanet;
@@ -17,7 +17,7 @@ public class Cat {
         return name;
     }
 
-    public Planet getHomePlanet() {
+    public int getHomePlanet() {
         return homePlanet;
     }
 
