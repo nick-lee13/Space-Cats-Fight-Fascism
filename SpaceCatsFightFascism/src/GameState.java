@@ -99,6 +99,15 @@ public class GameState {
         //INITIALIZE ALL CARDS HERE, MAKE SURE TO GIVE EACH ONE AN ACTION IN THEIR cardAction VARIABLE
         //DONT FORGET THIS I STG
         //make sure to check the counts of each cards in the doc
+        
+        /* example below for future perusal:
+        ResistCard card = new Card();
+        card.playAction = new CardAction(){
+            public void action(){
+                card.owner.getCat().setScratchCount(card.owner.getCat().getScratchCount() - 2)
+                //(With appropriate cases if scratches < 2... etc...)
+            }
+        }*/
     }
 
     //initializes the galaxy news deck
