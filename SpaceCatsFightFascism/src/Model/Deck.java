@@ -3,19 +3,23 @@ import java.util.Collections;
 
 public class Deck {
 
+    Player owner;
     LinkedList<Card> cards = new LinkedList<Card>(); // "Deck of Cards" is a collection of card objects
 
-    public Deck() { // Deck Constructor
+    public Deck(Player inOwner) { // Deck Constructor
             // Body
         this.shuffle();
+        owner = inOwner;
     }
 
     public void addCard(Card inCard) { // Removes the given card from a deck
         cards.add(inCard);
+        inCard.setOwner(owner);
     }
 
     public void removeCard(Card inCard) { // Removes the given card from the deck
         cards.remove(inCard);
+        inCard.setOwner(null);
     }
 
     public LinkedList<Card> getCards() { // Returns a list of cards in deck

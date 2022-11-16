@@ -184,9 +184,19 @@ public class GameState {
         return resistDeck;
     }
 
+    public Deck getResistUsedDeck()
+    {
+        return resistUsedDeck;
+    }
+
     public Deck getGalaxyNewsDeck()
     {
         return galaxyNewsDeck;
+    }
+
+    public Deck getGalaxyNewsUsedDeck()
+    {
+        return galaxyNewsUsedDeck;
     }
 
     public int getDiceRollCount()

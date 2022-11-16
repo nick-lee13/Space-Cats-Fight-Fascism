@@ -1,15 +1,8 @@
-public class CardAction {
+public interface CardAction {
 
-    public CardAction() {
-         
-    }
+    public void action();
 
-    public void execute() { 
-        
-    }
-
-    public void DisplayAction() {
-        
-    }
+    //commenting out displayaction until i feel like implementing it for each card
+    //public void DisplayAction();
     
 }

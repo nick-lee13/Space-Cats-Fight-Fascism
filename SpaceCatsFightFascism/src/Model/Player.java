@@ -1,9 +1,10 @@
 public class Player {
     Cat cat;
-    Deck deck = new Deck();
+    Deck deck;
 
     public Player(Cat cat) {
             this.cat = cat;
+            deck = new Deck(this);
     }
 
     public int getInput() {

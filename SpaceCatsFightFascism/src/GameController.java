@@ -38,7 +38,7 @@ class GameController {
     }
 
     // Draws a galaxy news card
-    public Card drawGalaxyNewsCard() {
+    public void drawGalaxyNewsCard() {
         LinkedList<Card> galaxyNewsCards = gameState.getGalaxyNewsDeck().getCards();
 
         if (galaxyNewsCards.size() == 0) {
@@ -48,8 +48,8 @@ class GameController {
 
         Card card = galaxyNewsCards.getFirst();
         gameState.getGalaxyNewsDeck().removeCard(card);
-
-        return card;
+        gameState.getGalaxyNewsUsedDeck().addCard(card);
+        card.play();
     }
 
     // Shuffles the decks using their discard piles
@@ -90,9 +90,13 @@ class GameController {
 
     // Play card action for the current player
     public void playCard(Card card) {
-        for (CardAction action : card.getActions()) {
-            action.execute(); // ** Maybe execute() can take the gameState as a param and use that to make changes **
+        card.play();
+        if(card instanceof ResistCard)
+        { 
+            gameState.getResistUsedDeck().addCard(card);
         }
+        //add code here that removes the card from the players hand somehow
+        //or add the code in the action that leads to this action, whatever works
     }
 
     public void startGame() {
