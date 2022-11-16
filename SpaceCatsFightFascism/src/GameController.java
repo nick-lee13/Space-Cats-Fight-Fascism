@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.Random;
 
 // GameController manages the main game logic and player behaviour functions
@@ -23,12 +24,32 @@ class GameController {
 
     // Draws a resist card
     public Card drawResistCard() {
-        return null;
+        LinkedList<Card> resistCards = gameState.getResistDeck().getCards();
+
+        if (resistCards.size() == 0) {
+            gameState.replaceResistDeck();
+            resistCards = gameState.getResistDeck().getCards();
+        }
+
+        Card card = resistCards.get(0);
+        gameState.getResistDeck().removeCard(card);
+
+        return card;
     }
 
     // Draws a galaxy news card
     public Card drawGalaxyNewsCard() {
-        return null;
+        LinkedList<Card> galaxyNewsCards = gameState.getGalaxyNewsDeck().getCards();
+
+        if (galaxyNewsCards.size() == 0) {
+            gameState.replaceGalaxyNewsDeck();
+            galaxyNewsCards = gameState.getGalaxyNewsDeck().getCards();
+        }
+
+        Card card = galaxyNewsCards.get(0);
+        gameState.getGalaxyNewsDeck().removeCard(card);
+
+        return card;
     }
 
     // Shuffles the decks using their discard piles
