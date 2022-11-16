@@ -89,6 +89,8 @@ public class GameState {
         roster[1] = pip;
         roster[2] = jasper;
         roster[3] = ophelia;
+
+        return roster;
     }
 
     //initializes the resist card deck
