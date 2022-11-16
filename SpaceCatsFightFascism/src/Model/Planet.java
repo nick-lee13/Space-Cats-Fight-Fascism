@@ -1,5 +1,4 @@
 public class Planet {
-    private boolean liberty = false;
     int id;
     int tokenCount;
 
@@ -9,7 +8,7 @@ public class Planet {
     }
 
     public boolean isLiberated() {
-        if(liberty == true)
+        if(tokenCount < 4)
             return true;
         return false;
     }
