@@ -1,3 +1,5 @@
+import javafx.scene.shape.Circle;
+
 public class Cat {
 
     private String name;
@@ -5,6 +7,8 @@ public class Cat {
     private AbilityCard ability;
     private Planet planet;
     private int scratchCount = 1; // I've set anything requiring a getter to be a private variable
+
+    private Circle catIcon;
 
     public Cat(String inName, int inHomePlanet, AbilityCard inAbility) { // Constructor does not include planet and scratch count 
                                                                             // since they are informed by the players actions.
@@ -33,6 +37,10 @@ public class Cat {
         return scratchCount;
     }
 
+    public Circle getCatIcon(){
+        return catIcon;
+    }
+
     public void setScratchCount(int inScracthCount) {
 
         if(inScracthCount > 4 || inScracthCount < 0) { // Throws exception if the incoming scratch count is out of bounds 0-4
@@ -44,5 +52,9 @@ public class Cat {
 
     public void setPLanet(Planet inPlanet){
         planet = inPlanet;
+    }
+
+    public void setCatIcon(Circle inCat){
+        catIcon = inCat;
     }
 }
