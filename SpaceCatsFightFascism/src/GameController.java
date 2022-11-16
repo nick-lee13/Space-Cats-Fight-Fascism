@@ -37,7 +37,7 @@ class GameController {
         return card;
     }
 
-    // Draws a galaxy news card
+    // Draws a galaxy news card, then plays it accordingly.
     public void drawGalaxyNewsCard() {
         LinkedList<Card> galaxyNewsCards = gameState.getGalaxyNewsDeck().getCards();
 
