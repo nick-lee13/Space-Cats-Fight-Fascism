@@ -113,6 +113,20 @@ public class GameState {
         return null;
     }
 
+    public void replaceGalaxyNewsDeck()
+    {
+        galaxyNewsUsedDeck.shuffle();
+        galaxyNewsDeck = galaxyNewsUsedDeck;
+        galaxyNewsUsedDeck = new Deck();
+    }
+
+    public void replaceResistDeck()
+    {
+        resistUsedDeck.shuffle();
+        resistDeck = resistUsedDeck;
+        resistUsedDeck = new Deck();
+    }
+
     public Player[] getPlayers()
     {
         return players;
