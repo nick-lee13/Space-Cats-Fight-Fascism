@@ -4,10 +4,10 @@ public abstract class Card {
     
     String name;
     
-    public String GetName() {
+    public String getName() {
         return name;
     }
 
-    protected abstract LinkedList<CardAction> GetActions();
+    protected abstract LinkedList<CardAction> getActions();
 
 }

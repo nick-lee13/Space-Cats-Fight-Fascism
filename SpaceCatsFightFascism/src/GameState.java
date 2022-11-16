@@ -168,6 +168,10 @@ public class GameState {
         return fascismScale;
     }
 
+    public int getPlayerTurn() {
+        return playerTurn;
+    }
+
     public Planet[][] getPlanetLayout()
     {
         return planetLayout;

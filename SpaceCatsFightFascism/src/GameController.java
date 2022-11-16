@@ -31,7 +31,7 @@ class GameController {
             resistCards = gameState.getResistDeck().getCards();
         }
 
-        Card card = resistCards.get(0);
+        Card card = resistCards.getFirst();
         gameState.getResistDeck().removeCard(card);
 
         return card;
@@ -46,7 +46,7 @@ class GameController {
             galaxyNewsCards = gameState.getGalaxyNewsDeck().getCards();
         }
 
-        Card card = galaxyNewsCards.get(0);
+        Card card = galaxyNewsCards.getFirst();
         gameState.getGalaxyNewsDeck().removeCard(card);
 
         return card;
@@ -58,34 +58,41 @@ class GameController {
         gameState.replaceGalaxyNewsDeck();
     }
 
-    // Shuffles the planet layout
-    public void shufflePlanets() {
-
-    }
-
     // Add a scratch to the current player
     public void addScratch() {
-
+        Cat cat = gameState.getPlayers()[gameState.getPlayerTurn()].getCat();
+        cat.setScratchCount(cat.getScratchCount() + 1);
     }
 
     // Travel action for the current player
     public void travel(Planet planet) {
-
+        Cat cat = gameState.getPlayers()[gameState.getPlayerTurn()].getCat();
+        cat.setPLanet(planet);
     }
 
     // Fight action for the current player
     public void fight() {
-
+        Planet planet = gameState.getPlayers()[gameState.getPlayerTurn()].getCat().getPlanet();
+        
+        if (planet.getTokens() < 0) {
+            planet.setTokenCount(planet.getTokens() + 1);
+        }
     }
 
     // Restock action for the current player
     public void restock() {
+        Deck deck = gameState.getPlayers()[gameState.getPlayerTurn()].getDeck();
 
+        while (deck.getCards().size() < 4) {
+            deck.addCard(drawResistCard());
+        }
     }
 
     // Play card action for the current player
-    public void playCard() {
-
+    public void playCard(Card card) {
+        for (CardAction action : card.getActions()) {
+            action.execute(); // ** Maybe execute() can take the gameState as a param and use that to make changes **
+        }
     }
 
     public void startGame() {
