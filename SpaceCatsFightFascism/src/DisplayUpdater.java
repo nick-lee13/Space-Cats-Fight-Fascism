@@ -24,12 +24,13 @@ public class DisplayUpdater extends Application {
         root.getChildren().add(gameElements.getBackgroundImage("res/game_bg.jpg"));
 
 
-        //Menu
+        //Menu bar
         root.getChildren().addAll(drawRectangle(840,0,210,600), drawRectangle(0, 450, 1050, 150));
         
         //Draw Planets
         root.getChildren().addAll(gameElements.drawPlanets(planetLayout));
 
+        //Player Actions
         Buttons b = new Buttons();
         root.getChildren().addAll(b.createPlayerButtons());
 
