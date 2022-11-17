@@ -85,10 +85,47 @@ public class GameState {
     {
         roster = new Cat[4];
 
-        aliasSC = new Cat("Alias:SC", 3, /*ABILITY CARD HERE*/);
-        pip = new Cat("Pip", 8, /*ABILITY CARD HERE*/);
-        jasper = new Cat("Jasper", 6, /*ABILITY CARD HERE*/);
-        ophelia = new Cat("Ophelia", 4, /*ABILITY CARD HERE*/);
+        Cat aliasSC, pip, jasper, ophelia;
+
+        AbilityCard alias = new Card("Hacker");
+        AbilityCard pip = new Card("Freedom Fighter");
+        AbilityCard jasper = new Card("Laser Eyes");
+        AbilityCard ophelia = new Card("Escape Artist");
+
+
+        //could these be cards that are implicit in a separate cat class for each individual cat?
+        //yeah probably, and will likely be in the next milestone if this text is still here
+        alias.playAction = new CardAction(){
+            public void action(){
+                //when fightfascism is called by a player with this cat as their cat, have an option that plays their abilitycard
+                
+            }
+        };
+        pip.playAction = new CardAction(){
+            public void action(){
+                //when restock is called by a player with this cat as their cat, have an option that plays this abilitycard
+            }
+        };
+        jasper.playAction = new CardAction(){
+            public void action(){
+                //when fightfascism is called by a player with this cat as their cat, have an option that plays this abilitycard
+            }
+        };
+        ophelia.playAction = new CardAction(){
+            public void action(){
+                //when 3 tokens are removed in a single turn (tracked by a constant that will be here or in gamecontroller) give an option for this card
+            }
+        };
+
+        aliasSC = new Cat("Alias:SC", 3, alias);
+        pip = new Cat("Pip", 8, pip);
+        jasper = new Cat("Jasper", 6, jasper);
+        ophelia = new Cat("Ophelia", 4, ophelia);
+
+        aliasSC.setPlanet(findPlanet(3));
+        pip.setPlanet(findPlanet(8));
+        jasper.setPlanet(findPlanet(6));
+        ophelia.setPlanet(findPlanet(4));
 
         roster[0] = aliasSC;
         roster[1] = pip;
