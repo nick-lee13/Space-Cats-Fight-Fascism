@@ -16,7 +16,7 @@ public class Cat {
             homePlanet= inHomePlanet;
             ability = inAbility;
             scratchCount = 0;
-            planet = inHomePlanet;
+            planet = null
     }
 
     public String getName() {
