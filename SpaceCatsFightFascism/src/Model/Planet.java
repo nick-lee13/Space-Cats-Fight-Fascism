@@ -13,7 +13,7 @@ public class Planet {
             //might change this to input a symbol in construction at some point
             symbol = null;
             x = index;
-            y = indey
+            y = indey;
     }
 
     public boolean isLiberated() {
