@@ -6,7 +6,6 @@ public class GameState {
     private int DEFAULT_PLAYERS = 2;
     private int DEFAULT_DIFFICULTY = 1;
     private int STARTING_DICE = 2;
-    private int STARTING_TOKENS = 6;
     
     private Player[] players;
     private Cat[] catRoster;
