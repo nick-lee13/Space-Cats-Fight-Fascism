@@ -137,7 +137,8 @@ public class GameState {
         return roster;
     }
 
-    //initializes the resist card deck
+    //initializes the resist card deck, these deck initializations can hopefully be done better or moved in the future
+    //not sure how to work better with functionality though
     private Deck initResistDeck()
     {
         //INITIALIZE ALL CARDS HERE, MAKE SURE TO GIVE EACH ONE AN ACTION IN THEIR cardAction VARIABLE
@@ -148,8 +149,7 @@ public class GameState {
         ResistCard card = new Card();
         card.playAction = new CardAction(){
             public void action(){
-                card.owner.getCat().setScratchCount(card.owner.getCat().getScratchCount() - 2)
-                //(With appropriate cases if scratches < 2... etc...)
+                //action here
             }
         }*/
         Deck outDeck = new Deck(null);
