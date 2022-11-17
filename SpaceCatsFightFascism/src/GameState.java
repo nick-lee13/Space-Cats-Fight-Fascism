@@ -24,8 +24,8 @@ public class GameState {
     private int fascistTokenCount;
     private int diceRollCount;
 
-    static ResistCard liberation, heal1, heal2, fascist2, teleport, whiskersymbol, earsymbol, tailsymbol, pawsymbol;
-    static GalaxyNewsCard discard, scratchlocal, scratchscale, scratch1, scratch2;
+    ResistCard liberation, heal1, heal2, fascist2, teleport, whiskersymbol, earsymbol, tailsymbol, pawsymbol;
+    GalaxyNewsCard discard, scratchlocal, scratchscale, scratch1, scratch2;
 
     //Initializes a new GameState, to be edited at the start of the game.
     public GameState()
