@@ -14,8 +14,6 @@ public class TestMain {
         Planet p12 = new Planet(12,4);
         
         Planet[][] planets = {{p1,p2,p3,p4},{p5,p6,p7,p8},{p9,p10,p11,p12}};
-        System.out.println(planets[2][3].getTokens());
-
 
         DisplayUpdater disp = new DisplayUpdater();
         disp.initDisplay(args);
