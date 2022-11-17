@@ -7,11 +7,13 @@ public class Planet {
     Image img;
     int x,y;
 
-    public Planet(int inId, int inTokenCount) {
+    public Planet(int inId, int index, int indey) {
             id = inId;
-            tokenCount = inTokenCount;
+            tokenCount = 0;
             //might change this to input a symbol in construction at some point
             symbol = null;
+            x = index;
+            y = indey
     }
 
     public boolean isLiberated() {
