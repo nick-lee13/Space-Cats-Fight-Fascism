@@ -646,7 +646,7 @@ public class GameState {
                     int n = rand.nextInt(12) + 1;
                 }
                 //add new planet with the numbered ID
-                planetLayout[i][j] = new Planet(n);
+                planetLayout[i][j] = new Planet(n, i, j);
                 //add the planet to the list of planets already added
                 visited.add(n);
 
