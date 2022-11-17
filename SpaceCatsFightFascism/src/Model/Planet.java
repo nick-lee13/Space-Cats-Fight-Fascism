@@ -5,6 +5,7 @@ public class Planet {
     int tokenCount;
     String symbol;
     Image img;
+    int x,y;
 
     public Planet(int inId, int inTokenCount) {
             id = inId;
@@ -47,5 +48,15 @@ public class Planet {
 
     public Image getImage(){
         return img;
+    }
+
+    public int[] getIndex(){
+        int[] xy = {x,y};
+        return xy;
+    }
+
+    public void setIndex(int indexX, int indexY){
+        x = indexX;
+        y= indexY;
     }
 }

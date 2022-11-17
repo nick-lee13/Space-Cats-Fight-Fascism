@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -41,6 +42,9 @@ public class DisplayUpdater extends Application {
         //Draw Flags
         root.getChildren().addAll(gameElements.drawFlags(planetLayout));//REPLACE WITH gc.getGameState().getPlanetLayout()
 
+        //draw Cats
+        root.getChildren().addAll(drawCats());
+
         //Player Actions
         Buttons b = new Buttons();
         root.getChildren().addAll(b.createPlayerButtons());
@@ -50,9 +54,16 @@ public class DisplayUpdater extends Application {
     }
 
     //update cat locations
-    /*public Circle drawCat(Cat cat){
+    public Circle[] drawCats(){
+        Circle[] catIcons = new Circle[4];
 
-    }*/
+        for(int i = 0; i < 4; i++){
+            Circle catLoc = new Circle(80+(i*35),160,15,Color.GREEN);
+            catIcons[i] = catLoc;
+        }
+
+        return catIcons;
+    }
 
     //update player controls/cards
 
