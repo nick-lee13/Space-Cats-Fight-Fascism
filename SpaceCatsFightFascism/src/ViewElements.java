@@ -10,12 +10,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
@@ -49,6 +49,36 @@ public class ViewElements {
 
 		return planetIcons;
 	}
+
+	//update token counts
+    public Text[] updateTokenCounters(Planet[][] planetLayout){
+        //System.out.println(planetLayout[0][0].getTokens());
+        Text[] tokenCounts = new Text[12];
+        int count = 0;
+        for(int i = 0; i < 3; i++){
+			for(int j = 0; j < 4; j++){
+                System.out.println(i+" "+j);
+                int currToken = 0;//planetLayout[i][j].getTokens();
+                System.out.println(currToken);
+				Text text = new Text("TOKENS: "+ Math.abs(currToken));
+                text.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+                text.setX(65+(j*190));
+                text.setY(120+(i*110));
+                if(currToken < 0){
+                    text.setFill(Color.BLUE);
+                }
+                else if(currToken > 0){
+                    text.setFill(Color.ORANGE);
+                }
+                else{
+                    text.setFill(Color.GRAY);
+                }
+                tokenCounts[count] = text;
+                count++;
+			}
+		}
+        return tokenCounts;
+    }
 
     public Title getTitle(String titleText){
         Title title = new Title (titleText);
