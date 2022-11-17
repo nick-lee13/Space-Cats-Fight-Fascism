@@ -24,7 +24,8 @@ public class GameState {
     private int fascistTokenCount;
     private int diceRollCount;
 
-    ResistCard liberation, heal1, heal2, fascist2, teleport, whiskersymbol, earsymbol, tailsymbol, pawsymbol;
+    static ResistCard liberation, heal1, heal2, fascist2, teleport, whiskersymbol, earsymbol, tailsymbol, pawsymbol;
+    static GalaxyNewsCard discard, scratchlocal, scratchscale, scratch1, scratch2;
 
     //Initializes a new GameState, to be edited at the start of the game.
     public GameState()
@@ -40,18 +41,19 @@ public class GameState {
         //edit below for when it is not restricted
         fascismScale = DEFAULT_DIFFICULTY;
         players = new Player[DEFAULT_PLAYERS]
+        catRoster = initCatRoster();
         for(int i = 0, i < players.length; i++)
         {
-            players[0]
+            players[i] = new Player(catRoster[i])
         }
         //edit above for when it is not restricted
 
-        catRoster = initCatRoster();
+        
 
         resistDeck = initResistDeck();
         galaxyNewsDeck = initGalaxyNewsDeck();
-        resistUsedDeck = new Deck();
-        galaxyNewsUsedDeck = new Deck();
+        resistUsedDeck = new Deck(null);
+        galaxyNewsUsedDeck = new Deck(null);
 
         liberatedFlagsUsed = 0;
         occupiedFlagsUsed = 0;
@@ -150,7 +152,7 @@ public class GameState {
                 //(With appropriate cases if scratches < 2... etc...)
             }
         }*/
-        Deck outDeck = new Deck();
+        Deck outDeck = new Deck(null);
 
         ResistCard liberation = new Card("+1 Liberation");
         ResistCard heal1 = new Card("Heal 1");
@@ -384,7 +386,112 @@ public class GameState {
     //initializes the galaxy news deck
     private Deck initGalaxyNewsDeck()
     {
-        //same as above method buddy
+        /* example below for future perusal:
+        GalaxyNewsCard card = new Card();
+        card.playAction = new CardAction(){
+            public void action(){
+                card.owner.getCat().setScratchCount(card.owner.getCat().getScratchCount() - 2)
+                //(With appropriate cases if scratches < 2... etc...)
+            }
+        }*/
+
+        Deck outDeck = new Deck(null);
+
+        GalaxyNewsCard discard = new Card("Catnip is Criminalized");
+        GalaxyNewsCard scratchlocal = new Card("Cat Arrests on All Planets");
+        GalaxyNewsCard scratchscale =  new Card("Cat Power in Decline");
+        GalaxyNewsCard scratch2 = new Card("Corporations Fund the Anti-Cat Campaign");
+        GalaxyNewsCard scratch1 = new Card("Martial Law is Declared");
+
+        discard.playAction = new CardAction(){
+            public void action(){
+                setFascismScale(getFascismScale() + 1);
+                for(int i = 0; i < discard.getOwner().getDeck().getCards().size(); i++)
+                {
+                    Card card = players[playerTurn - 1].getDeck().getCards().remove();
+                    resistUsedDeck.addCard(card);
+                }
+                galaxyNewsUsedDeck.addCard(discard);
+            }
+        };
+
+        scratchlocal.playAction = new CardAction(){
+            public void action(){
+                Planet currplanet = players[playerTurn - 1].getCat().getPlanet();
+
+                players[playerTurn - 1].getCat().getPlanet().setTokenCount(currplanet.getTokenCount() - 1);
+
+                for(int i = 0; i < players.length; i++)
+                {
+                    if(players[i].getCat().getPlanet() == currPlanet())
+                    {
+                        players[i].getCat().setScratchCount(players[i].getCat().getScratchCount() + 1);
+                    }
+                }
+
+                galaxyNewsUsedDeck.addCard(scratchlocal);
+            }
+        };
+
+        scratchscale.playAction = new CardAction(){
+            public void action(){
+                Planet currplanet = players[playerTurn - 1].getCat().getPlanet();
+
+                players[playerTurn - 1].getCat().getPlanet().setTokenCount(currplanet.getTokenCount() - 1);
+
+                for(int i = 0; i < players.length; i++)
+                {
+                    if(players[i].getCat().getPlanet() == currPlanet())
+                    {
+                        players[i].getCat().setScratchCount(players[i].getCat().getScratchCount() + 1);
+                    }
+                }
+
+                setFascismScale(getFascismScale() + 1);
+                
+                galaxyNewsUsedDeck.addCard(scratchscale);
+            }
+        };
+
+        scratch2.playAction = new CardAction(){
+            public void action(){
+                players[playerTurn - 1].getCat().setScratchCount(players[playerTurn - 1].getCat().getScratchCount() + 2);
+                players[playerTurn - 1].getCat().setPlanet(findPlanet(players[playerTurn - 1].getCat().getHomePlanet()));
+
+                galaxyNewsUsedDeck.addCard(scratch2);
+            }
+        };
+
+        scratch1.playAction = new CardAction(){
+            public void action(){
+                setFascismScale(getFascismScale() + 1);
+
+                players[playerTurn - 1].getCat().setScratchCount(players[playerTurn - 1].getCat().getScratchCount() + 1);
+
+                galaxyNewsUsedDeck.addCard(scratch1);
+            }
+        };
+
+        int n = 10;
+        while(n > 0)
+        {
+            outNewsDeck.addCard(scratch1);
+        }
+        n = 2;
+        while(n > 0)
+        {
+            outNewsDeck.addCard(scratchlocal);
+            outNewsDeck.addCard(discard);
+        }
+        n = 1;
+        while(n > 0)
+        {
+            outNewsDeck.addCard(scratchscale);
+            outNewsDeck.addCard(scratch2);
+        }
+        outDeck.shuffle();
+
+        return outDeck;
     }
 
     //Initialize the starting tokens at the start of the game
