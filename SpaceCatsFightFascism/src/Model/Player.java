@@ -2,7 +2,7 @@ public class Player {
     Cat cat;
     Deck deck;
     int playerNum;
-    int turnCount;
+    int actionCount;
 
     public Player(int playerNum, Cat cat) {
             this.cat = cat;
@@ -11,9 +11,6 @@ public class Player {
             turnCount = 1;
     }
 
-    public void incrementTurn(){ // Called when Player finishes turn to increase turn count
-        turnCount++;
-    }
 
     public int getInput() {
             return 1;
