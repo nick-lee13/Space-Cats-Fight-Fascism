@@ -52,14 +52,11 @@ public class ViewElements {
 
 	//update token counts
     public Text[] updateTokenCounters(Planet[][] planetLayout){
-        //System.out.println(planetLayout[0][0].getTokens());
         Text[] tokenCounts = new Text[12];
         int count = 0;
         for(int i = 0; i < 3; i++){
 			for(int j = 0; j < 4; j++){
-                System.out.println(i+" "+j);
                 int currToken = 0;//planetLayout[i][j].getTokens();
-                System.out.println(currToken);
 				Text text = new Text("TOKENS: "+ Math.abs(currToken));
                 text.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
                 text.setX(65+(j*190));
@@ -78,6 +75,35 @@ public class ViewElements {
 			}
 		}
         return tokenCounts;
+    }
+
+	//update flags
+    public Text[] drawFlags(Planet[][] planetLayout){
+        Text[] flags = new Text[12];
+        int count = 0;
+        for(int i = 0; i < 3; i++){
+			for(int j = 0; j < 4; j++){
+                int currToken = 3;//planetLayout[i][j].getTokens();
+				Text text = new Text();
+				if(currToken >= 4){
+					text.setText("LIB");
+                    text.setFill(Color.BLUE);
+                }
+                else if(currToken <= -4){
+					text.setText("OCC");
+                    text.setFill(Color.ORANGE);
+                }
+                else{
+                    text.setFill(Color.TRANSPARENT);
+                }
+                text.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+                text.setX(180+(j*190));
+                text.setY(120+(i*110));
+                flags[count] = text;
+                count++;
+            }
+        }
+		return flags;
     }
 
     public Title getTitle(String titleText){

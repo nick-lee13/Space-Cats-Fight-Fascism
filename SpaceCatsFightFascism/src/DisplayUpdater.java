@@ -39,7 +39,7 @@ public class DisplayUpdater extends Application {
         root.getChildren().addAll(gameElements.updateTokenCounters(planetLayout)); //REPLACE WITH gc.getGameState().getPlanetLayout()
 
         //Draw Flags
-        
+        root.getChildren().addAll(gameElements.drawFlags(planetLayout));//REPLACE WITH gc.getGameState().getPlanetLayout()
 
         //Player Actions
         Buttons b = new Buttons();
@@ -53,8 +53,6 @@ public class DisplayUpdater extends Application {
     /*public Circle drawCat(Cat cat){
 
     }*/
-
-    //update flags
 
     //update player controls/cards
 
