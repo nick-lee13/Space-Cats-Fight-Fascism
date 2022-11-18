@@ -27,7 +27,7 @@ public class Cat {
         return homePlanet;
     }
 
-    public AbilityCard getAbilityCard() {
+    public Card getAbilityCard() {
         return ability;
     }
 
