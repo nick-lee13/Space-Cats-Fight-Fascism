@@ -16,7 +16,7 @@ public abstract class Card {
 
     //Set the owner of the card, to be used upon drawing or playing
     public void setOwner(Player inOwner) {
-        owner = inOwner
+        owner = inOwner;
     }
 
     //Method that will enact the card's action
