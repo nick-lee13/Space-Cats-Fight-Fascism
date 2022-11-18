@@ -163,6 +163,16 @@ public class ViewElements {
 		return cardIcons;
 	}
 
+	public Text[] displayResistText(Player player){
+		Text[] texts = new Text[3];
+		for(int i = 0; i < 3; i++){
+			Text txt = new Text(880,70+(175*i),player.getDeck().getCards().get(i).getName());
+			txt.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 15));
+			texts[i] = txt;
+		}
+		return texts;
+	}
+
     public Title getTitle(String titleText){
         Title title = new Title (titleText);
 		title.setTranslateX(50);
