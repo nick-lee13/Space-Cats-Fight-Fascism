@@ -266,8 +266,8 @@ public class DisplayUpdater extends Application {
             @Override
             public void handle(MouseEvent t) {
                 System.out.println("RESIST 0 PICKED");
-                //Card toUse = gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getDeck().getCards().get(0);
-                //gc.playCard(toUse);
+                Card toUse = gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getDeck().getCards().get(0);
+                gc.playCard(toUse);
             }
         });
         cardActions[1].setOnMouseClicked(new EventHandler<MouseEvent>()
@@ -275,6 +275,8 @@ public class DisplayUpdater extends Application {
             @Override
             public void handle(MouseEvent t) {
                 System.out.println("RESIST 1 PICKED");
+                Card toUse = gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getDeck().getCards().get(1);
+                gc.playCard(toUse);
             }
         });
         cardActions[2].setOnMouseClicked(new EventHandler<MouseEvent>()
@@ -282,6 +284,8 @@ public class DisplayUpdater extends Application {
             @Override
             public void handle(MouseEvent t) {
                 System.out.println("RESIST 2 PICKED");
+                Card toUse = gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getDeck().getCards().get(2);
+                gc.playCard(toUse);
             }
         });
         return cardActions;
