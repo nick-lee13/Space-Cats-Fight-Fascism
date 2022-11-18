@@ -175,7 +175,7 @@ public class GameState {
             }
             else
             {
-                liberation.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 1);
+                liberation.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 1);
             }
              
         }
@@ -222,15 +222,15 @@ public class GameState {
         fascist2.playAction = new CardAction(){
             public void action(){
                 Planet currPlanet = fascist2.owner.getCat().getPlanet();
-                if(currPlanet.getTokenCount() < 0)
+                if(currPlanet.getTokens() < 0)
                 {
-                    if(currPlanet.getTokenCount() + 2 > 0)
+                    if(currPlanet.getTokens() + 2 > 0)
                     {
-                        fascist2.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 1);
+                        fascist2.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 1);
                     }
                     else
                     {
-                        fascist2.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 2);
+                        fascist2.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 2);
                     }
                 }
                 else
@@ -255,9 +255,9 @@ public class GameState {
                 currPlanet = whiskersymbol.owner.getCat().getPlanet();
                 if(currPlanet.getSymbol() = "Whiskers")
                 {
-                    if(currPlanet.getTokenCount() >= 0)
+                    if(currPlanet.getTokens() >= 0)
                     {
-                        whiskersymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 2);
+                        whiskersymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 2);
                     }
                     else
                     {
@@ -278,9 +278,9 @@ public class GameState {
                 currPlanet = earsymbol.owner.getCat().getPlanet();
                 if(currPlanet.getSymbol() = "Ears")
                 {
-                    if(currPlanet.getTokenCount() >= 0)
+                    if(currPlanet.getTokens() >= 0)
                     {
-                        earsymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 2);
+                        earsymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 2);
                     }
                     else
                     {
@@ -301,9 +301,9 @@ public class GameState {
                 currPlanet = tailsymbol.owner.getCat().getPlanet();
                 if(currPlanet.getSymbol() = "Tail")
                 {
-                    if(currPlanet.getTokenCount() >= 0)
+                    if(currPlanet.getTokens() >= 0)
                     {
-                        tailsymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 2);
+                        tailsymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 2);
                     }
                     else
                     {
@@ -324,9 +324,9 @@ public class GameState {
                 currPlanet = pawsymbol.owner.getCat().getPlanet();
                 if(currPlanet.getSymbol() = "Paw")
                 {
-                    if(currPlanet.getTokenCount() >= 0)
+                    if(currPlanet.getTokens() >= 0)
                     {
-                        pawsymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokenCount() + 2);
+                        pawsymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 2);
                     }
                     else
                     {
@@ -418,7 +418,7 @@ public class GameState {
             public void action(){
                 Planet currplanet = players[playerTurn - 1].getCat().getPlanet();
 
-                players[playerTurn - 1].getCat().getPlanet().setTokenCount(currplanet.getTokenCount() - 1);
+                players[playerTurn - 1].getCat().getPlanet().setTokenCount(currplanet.getTokens() - 1);
 
                 for(int i = 0; i < players.length; i++)
                 {
@@ -436,7 +436,7 @@ public class GameState {
             public void action(){
                 Planet currplanet = players[playerTurn - 1].getCat().getPlanet();
 
-                players[playerTurn - 1].getCat().getPlanet().setTokenCount(currplanet.getTokenCount() - 1);
+                players[playerTurn - 1].getCat().getPlanet().setTokenCount(currplanet.getTokens() - 1);
 
                 for(int i = 0; i < players.length; i++)
                 {
