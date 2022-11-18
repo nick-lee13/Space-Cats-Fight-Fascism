@@ -38,18 +38,18 @@ class GameController {
             {
                 int roll = rollDice();
                 Planet currPlanet = gameState.findPlanet(roll);
-                currPlanet.setTokenCount(currPlanet.getTokenCount() + 1);
+                currPlanet.setTokens(currPlanet.getTokens() + 1);
                 //something seems smelly around here
                 for(int j = 0; j < gameState.getPlayers().length; j++)
                 {
                     if(gameState.getPlayers()[j].getCat().getPlanet() == currPlanet)
                     {
-                        gameState.getPlayers()[j].getCat().setScratchCount(players[j].getCat().getScratchCount() + 1);
+                        gameState.getPlayers()[j].getCat().setScratchCount(gameState.getPlayers()[j].getCat().getScratchCount() + 1);
                     }
                 }
 
             }
-            gameState.setRollDiceCount(2 + (int) Math.floor(gameState.getFascismScale()/7));
+            gameState.setDiceRollCount(2 + (int) Math.floor(gameState.getFascismScale()/7));
         }
     }
     // Increases the facism scale by 1
@@ -156,7 +156,7 @@ class GameController {
         Planet planet = gameState.getPlayers()[gameState.getPlayerTurn()].getCat().getPlanet();
         
         if (planet.getTokens() < 0) {
-            planet.setTokenCount(planet.getTokens() + 1);
+            planet.setTokens(planet.getTokens() + 1);
             actionCount--;
             return true;
         }
@@ -196,8 +196,8 @@ class GameController {
 
     public void startGame() {
         gameState = new GameState();
-        DisplayUpdater view = new DisplayUpdater();
-        view.initDisplay();
+        //view = new DisplayUpdater();
+        //view.initDisplay();
         actionCount = 3;
         //runTurn();
     }
@@ -208,6 +208,6 @@ class GameController {
 
     public static void main(String[] args)
     {
-        startGame();
+        //startGame();
     }
 }

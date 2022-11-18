@@ -47,14 +47,16 @@ public class GameState {
         {
             players[i] = new Player(i,catRoster[i]);
         }
+        System.out.println("Player: "+players[0].getPlayerNum()+", Name: "+players[0].getCat().getName()+", currPlanet:"+players[0].getCat().getPlanet().getId());
+        System.out.println("Player: "+players[1].getPlayerNum()+", Name: "+players[1].getCat().getName()+", currPlanet:"+players[1].getCat().getPlanet().getId());
         //edit above for when it is not restricted
 
         
-
-        resistDeck = initResistDeck();
-        galaxyNewsDeck = initGalaxyNewsDeck();
-        resistUsedDeck = new Deck(null);
-        galaxyNewsUsedDeck = new Deck(null);
+        //SOMETHING WRONG WITH THESE METHODS!! STARTS INF LOOP
+        //resistDeck = initResistDeck();
+        //galaxyNewsDeck = initGalaxyNewsDeck();
+        //resistUsedDeck = new Deck(null);
+        //galaxyNewsUsedDeck = new Deck(null);
 
         liberatedFlagsUsed = 0;
         occupiedFlagsUsed = 0;
@@ -517,9 +519,9 @@ public class GameState {
     //Helper function to return a planet given a planet ID by searching through the planet layout.
     public Planet findPlanet(int id)
     {
-        for(int i = 0; i < planetLayout.length; i++)
+        for(int i = 0; i < 3; i++)
         {
-            for(int j = 0; j < planetLayout.length; j++)
+            for(int j = 0; j < 4; j++)
             {
                 Planet currPlanet = planetLayout[i][j];
                 if(currPlanet.getId() == id)
@@ -597,6 +599,10 @@ public class GameState {
         return diceRollCount;
     }
 
+    public void setDiceRollCount(int diceNum){
+        diceRollCount = diceNum;
+    }
+
     public void setPlayerTurn(int turn)
     {
         playerTurn = turn;
@@ -657,6 +663,13 @@ public class GameState {
                 //add the planet to the list of planets already added
                 visited.add(n);
 
+            }
+        }
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 4; j++)
+            {
+                System.out.println("PlanID: "+planetLayout[i][j].getId()+", PlanX: "+planetLayout[i][j].getIndex()[0]+","+planetLayout[i][j].getIndex()[1]);
             }
         }
     }

@@ -58,7 +58,7 @@ public class ViewElements {
         int count = 0;
         for(int i = 0; i < 3; i++){
 			for(int j = 0; j < 4; j++){
-                int currToken = 0;//planetLayout[i][j].getTokens();
+                int currToken = planetLayout[i][j].getTokens();
 				Text text = new Text("TOKENS: "+ Math.abs(currToken));
                 text.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
                 text.setX(65+(j*190));
@@ -85,7 +85,7 @@ public class ViewElements {
         int count = 0;
         for(int i = 0; i < 3; i++){
 			for(int j = 0; j < 4; j++){
-                int currToken = 4;//planetLayout[i][j].getTokens();
+                int currToken = planetLayout[i][j].getTokens();
 				Text text = new Text();
 				if(currToken >= 4){
 					text.setText("LIB");
