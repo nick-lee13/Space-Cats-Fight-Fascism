@@ -1,4 +1,4 @@
-import javafx.scene.shape.Circle;
+
 
 public class Cat {
 
@@ -8,7 +8,7 @@ public class Cat {
     private Planet planet;
     private int scratchCount = 1; // I've set anything requiring a getter to be a private variable
 
-    private Circle catIcon;
+    //private Circle catIcon;
 
     public Cat(String inName, int inHomePlanet, Card inAbility) { // Constructor does not include planet and scratch count 
                                                                             // since they are informed by the players actions.
@@ -39,9 +39,9 @@ public class Cat {
         return scratchCount;
     }
 
-    public Circle getCatIcon(){
+    /*public Circle getCatIcon(){
         return catIcon;
-    }
+    }*/
 
     public void setScratchCount(int inScracthCount) {
 
@@ -56,7 +56,7 @@ public class Cat {
         planet = inPlanet;
     }
 
-    public void setCatIcon(Circle inCat){
+    /*public void setCatIcon(Circle inCat){
         catIcon = inCat;
-    }
+    }*/
 }

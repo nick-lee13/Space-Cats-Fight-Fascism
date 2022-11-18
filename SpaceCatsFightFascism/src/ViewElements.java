@@ -164,8 +164,8 @@ public class ViewElements {
 	}
 
 	public Text[] displayResistText(Player player){
-		Text[] texts = new Text[3];
-		for(int i = 0; i < 3; i++){
+		Text[] texts = new Text[player.getDeck().getSize()];
+		for(int i = 0; i < player.getDeck().getSize(); i++){
 			Text txt = new Text(880,70+(175*i),player.getDeck().getCards().get(i).getName());
 			txt.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 15));
 			texts[i] = txt;

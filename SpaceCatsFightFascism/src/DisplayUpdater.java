@@ -1,6 +1,8 @@
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 
+import java.util.Objects;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,17 +29,6 @@ public class DisplayUpdater extends Application {
     Pane root;
     Scene scene;
 
-    //DEV TESTING DELETE
-    Cat cat1 = new Cat("Ophelia", 3, new AbilityCard("TEST"));
-    Cat cat2 = new Cat("Alias:SC", 6, new AbilityCard("TEST"));
-    Planet plan1 = new Planet(3, 0, 2);
-    Planet plan2 = new Planet(10, 2, 1);
-    Player plyr1 = new Player(0,cat1);
-    Player plyr2 = new Player(1,cat2);
-    Player[] players = {plyr1,plyr2};
-    //DEV TESTING DELETE
-
-
     @Override
     public void start(Stage stage){
 
@@ -57,13 +48,6 @@ public class DisplayUpdater extends Application {
         
         //Draw Planets
         root.getChildren().addAll(gameElements.drawPlanets(gc.getGameState().getPlanetLayout()));
-
-        //DEV TESTING DELETE
-        plan1.setIndex(2, 3);
-        plan2.setIndex(0,2);
-        cat1.setPlanet(plan2);
-        cat2.setPlanet(plan2);
-        //DEV TESTING DELETE
 
         //Player Actions
         Buttons b = new Buttons();
@@ -109,7 +93,7 @@ public class DisplayUpdater extends Application {
 
     public void redisplay(){
         if(!firstRun){
-            root.getChildren().remove(24, 56);
+            root.getChildren().remove(24, 58);
         }
         else{
             firstRun = false;
@@ -131,7 +115,8 @@ public class DisplayUpdater extends Application {
 
         // Draw Resist Cards
 
-        root.getChildren().addAll(setResistEvents(gameElements.displayResistCards(plyr1)));
+        root.getChildren().addAll(setResistEvents(gameElements.displayResistCards(gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()])));
+        root.getChildren().addAll(gameElements.displayResistText(gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()]));
         System.out.println(root.getChildren().size());
 
     }
@@ -267,7 +252,12 @@ public class DisplayUpdater extends Application {
             public void handle(MouseEvent t) {
                 System.out.println("RESIST 0 PICKED");
                 Card toUse = gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getDeck().getCards().get(0);
-                gc.playCard(toUse);
+                if(Objects.isNull(toUse)){
+                    broadcast = "No Resist Card to use!";
+                }
+                else{
+                    gc.playCard(toUse);
+                }
                 redisplay();
             }
         });
@@ -277,7 +267,12 @@ public class DisplayUpdater extends Application {
             public void handle(MouseEvent t) {
                 System.out.println("RESIST 1 PICKED");
                 Card toUse = gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getDeck().getCards().get(1);
-                gc.playCard(toUse);
+                if(Objects.isNull(toUse)){
+                    broadcast = "No Resist Card to use!";
+                }
+                else{
+                    gc.playCard(toUse);
+                }
                 redisplay();
             }
         });
@@ -287,7 +282,12 @@ public class DisplayUpdater extends Application {
             public void handle(MouseEvent t) {
                 System.out.println("RESIST 2 PICKED");
                 Card toUse = gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getDeck().getCards().get(2);
-                gc.playCard(toUse);
+                if(Objects.isNull(toUse)){
+                    broadcast = "No Resist Card to use!";
+                }
+                else{
+                    gc.playCard(toUse);
+                }
                 redisplay();
             }
         });
