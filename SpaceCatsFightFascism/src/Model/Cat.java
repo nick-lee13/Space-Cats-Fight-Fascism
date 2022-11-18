@@ -4,7 +4,7 @@ public class Cat {
 
     private String name;
     private int homePlanet;
-    private AbilityCard ability;
+    private Card ability;
     private Planet planet;
     private int scratchCount = 1; // I've set anything requiring a getter to be a private variable
 
