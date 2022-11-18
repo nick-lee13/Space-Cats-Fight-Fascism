@@ -396,11 +396,11 @@ public class GameState {
 
         Deck outDeck = new Deck(null);
 
-        GalaxyNewsCard discard = new Card("Catnip is Criminalized");
-        GalaxyNewsCard scratchlocal = new Card("Cat Arrests on All Planets");
-        GalaxyNewsCard scratchscale =  new Card("Cat Power in Decline");
-        GalaxyNewsCard scratch2 = new Card("Corporations Fund the Anti-Cat Campaign");
-        GalaxyNewsCard scratch1 = new Card("Martial Law is Declared");
+        GalacticNewsCard discard = new GalacticNewsCard("Catnip is Criminalized");
+        GalacticNewsCard scratchlocal = new GalacticNewsCard("Cat Arrests on All Planets");
+        GalacticNewsCard scratchscale =  new GalacticNewsCard("Cat Power in Decline");
+        GalacticNewsCard scratch2 = new GalacticNewsCard("Corporations Fund the Anti-Cat Campaign");
+        GalacticNewsCard scratch1 = new GalacticNewsCard("Martial Law is Declared");
 
         discard.playAction = new CardAction(){
             public void action(){
