@@ -24,6 +24,7 @@ public class GameState {
     private int occupiedFlagsUsed;
     private int fascistTokenCount;
     private int diceRollCount;
+    private int tokensRemoved;
 
     Card liberation, heal1, heal2, fascist2, teleport, whiskersymbol, earsymbol, tailsymbol, pawsymbol;
     Card discard, scratchlocal, scratchscale, scratch1, scratch2;
@@ -103,6 +104,18 @@ public class GameState {
         alias.playAction = new CardAction(){
             public void action(){
                 //when fightfascism is called by a player with this cat as their cat, have an option that plays their abilitycard
+                if(players[playerTurn].getDeck().getSize() < 3)
+                {
+                    if(resistCards.getSize() != 0)
+                    {
+                        players[playerTurn].addCard(resistDeck.removeCard(resistCards.getFirst()));
+                    }
+                    else
+                    {
+                        replaceResistDeck();
+                        players[playerTurn].addCard(resistDeck.removeCard(resistCards.getFirst()));
+                    }
+                }
                 
             }
         };
@@ -231,10 +244,12 @@ public class GameState {
                     if(currPlanet.getTokens() + 2 > 0)
                     {
                         fascist2.owner.getCat().getPlanet().setTokens(currPlanet.getTokens() + 1);
+                        tokensRemoved = tokensRemoved + 1;
                     }
                     else
                     {
                         fascist2.owner.getCat().getPlanet().setTokens(currPlanet.getTokens() + 2);
+                        tokensRemoved = tokensRemoved + 2;
                     }
                 }
                 else
@@ -599,6 +614,11 @@ public class GameState {
         return diceRollCount;
     }
 
+    public int getTokensRemoved()
+    {
+        return tokensRemoved;
+    }
+
     public void setDiceRollCount(int diceNum){
         diceRollCount = diceNum;
     }
@@ -616,6 +636,11 @@ public class GameState {
     public void setPlayers(Player[] inputPlayers)
     {
         players = inputPlayers;
+    }
+
+    public void setTokensRemoved(int n)
+    {
+        tokensRemoved = n;
     }
 
     public void setCatRoster(Cat[] cats)

@@ -36,6 +36,7 @@ class GameController {
             }
             for(int i = 0; i < gameState.getDiceRollCount(); i++)
             {
+                i = i + gameState.getTokensRemoved();
                 int roll = rollDice();
                 Planet currPlanet = gameState.findPlanet(roll);
                 currPlanet.setTokens(currPlanet.getTokens() + 1);
@@ -49,7 +50,8 @@ class GameController {
                 }
 
             }
-            gameState.setDiceRollCount(2 + (int) Math.floor(gameState.getFascismScale()/7));
+            gameState.setTokensRemoved(0);
+            gameState.setRollDiceCount(2 + (int) Math.floor(gameState.getFascismScale()/7));
         }
     }
     // Increases the facism scale by 1
@@ -152,12 +154,24 @@ class GameController {
     }
 
     // Fight action for the current player
+    //will likely move this to be a method in the cat class that the individual cats can override if necessary in the future
+    //because i KNOW these if statements are smelly
     public boolean fight() {
-        Planet planet = gameState.getPlayers()[gameState.getPlayerTurn()].getCat().getPlanet();
-        
+        Cat pCat = gameState.getPlayers()[gameState.getPlayerTurn()].getCat()
+        Planet planet = pCat.getPlanet();
+        if(pCat.getAbilityCard().getName() == "Laser Eyes")
+        {
+            planet = planet;
+            // ADD PLANET CHOOSING FUNCTIONALITY
+        }
         if (planet.getTokens() < 0) {
-            planet.setTokens(planet.getTokens() + 1);
+            planet.setTokenCount(planet.getTokens() + 1);
+            gameState.setTokensRemoved(gameState.getTokensRemoved() + 1);
             actionCount--;
+            if(pCat.getAbilityCard().getName() == "Hacker")
+            {
+                pCat.getAbilityCard().play();
+            }
             return true;
         }
         return false;
