@@ -73,10 +73,11 @@ class GameController {
         LinkedList<Card> resistCards = gameState.getResistDeck().getCards();
 
         if (resistCards.size() == 0) {
+            print("No deck");
             gameState.replaceResistDeck();
             resistCards = gameState.getResistDeck().getCards();
         }
-
+        
         Card card = resistCards.getFirst();
         gameState.getResistDeck().removeCard(card);
 

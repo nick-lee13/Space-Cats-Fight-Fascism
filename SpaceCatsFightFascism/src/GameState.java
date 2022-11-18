@@ -371,6 +371,7 @@ public class GameState {
         while(n >= 0)
         {
             outDeck.addCard(liberation);
+            print(outDeck.getSize());
             n--;
         }
         n = 6;
