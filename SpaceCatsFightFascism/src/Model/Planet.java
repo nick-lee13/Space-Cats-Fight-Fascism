@@ -30,7 +30,7 @@ public class Planet {
         return tokenCount;
     }
 
-    public void setTokenCount(int inToken) {
+    public void setTokens(int inToken) {
         tokenCount = inToken;
     }
 
