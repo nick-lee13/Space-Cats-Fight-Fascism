@@ -7,7 +7,7 @@ class GameController {
     private GameState gameState;
     private Random randNumGenerator;
     private int actionCount;
-    View view = new View(); 
+    DisplayerUpdater view;
 
     // Runs the main logic for a single player's turn
     public void runTurn() {
