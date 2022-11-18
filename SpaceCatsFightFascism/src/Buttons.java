@@ -1,67 +1,45 @@
 import javafx.scene.control.Button;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 
 public class Buttons {
     public Button[] createPlayerButtons(){
 
-        Button travel = new Button();
+        Button travelUp = new Button();
+        Button travelDown = new Button();
+        Button travelLeft = new Button();
+        Button travelRight = new Button();
         Button fightFascism = new Button();
         Button restock = new Button();
         Button playResistCard = new Button();
         Button endTurn = new Button();
 
-        travel.setText("TRAVEL");
+        travelUp.setText("TRAVEL UP");
+        travelDown.setText("TRAVEL DOWN");
+        travelLeft.setText("TRAVEL LEFT");
+        travelRight.setText("TRAVEL RIGHT");
         fightFascism.setText("FIGHT FASCISM");
         restock.setText("RESTOCK");
         playResistCard.setText("PLAY RESIST CARD");
         endTurn.setText("END TURN");
 
-        //TEMP
-        travel.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("TRAVEL BUTTON PRESSED");
-            }
-        });
-        fightFascism.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("FIGHT BUTTON PRESSED");
-            }
-        });
-        restock.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("RESTOCK BUTTON PRESSED");
-            }
-        });
-        playResistCard.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("RESIST BUTTON PRESSED");
-            }
-        });
-        endTurn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("END BUTTON PRESSED");
-            }
-        });
-
-        travel.setLayoutX(75);
-        fightFascism.setLayoutX(200);
+        travelUp.setLayoutX(75);
+        travelDown.setLayoutX(60);
+        travelLeft.setLayoutX(20);
+        travelRight.setLayoutX(110);
+        fightFascism.setLayoutX(220);
         restock.setLayoutX(370);
         playResistCard.setLayoutX(505);
         endTurn.setLayoutX(690);
 
-        travel.setLayoutY(520);
+        travelUp.setLayoutY(490);
+        travelDown.setLayoutY(550);
+        travelLeft.setLayoutY(520);
+        travelRight.setLayoutY(520);
         fightFascism.setLayoutY(520);
         restock.setLayoutY(520);
         playResistCard.setLayoutY(520);
         endTurn.setLayoutY(520);
 
-        Button[] buttons = {travel,fightFascism,restock,playResistCard,endTurn};
+        Button[] buttons = {travelUp,travelDown,travelLeft,travelRight,fightFascism,restock,playResistCard,endTurn};
         return buttons;
     }
 }

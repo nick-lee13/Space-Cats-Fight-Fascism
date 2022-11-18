@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -21,6 +22,7 @@ import javafx.scene.text.Text;
 
 public class ViewElements {
 
+	//Tries to return ImageView for background
     public ImageView getBackgroundImage(String path){
         try(InputStream is = Files.newInputStream(Paths.get(path))){
 			ImageView img = new ImageView(new Image(is));
@@ -105,6 +107,61 @@ public class ViewElements {
         }
 		return flags;
     }
+
+	//update cat locations
+    public Circle[] drawCats(Player[] players){
+        Circle[] catIcons = new Circle[players.length];
+
+        for(int i = 0; i < players.length; i++){
+            int x = 80 + (players[i].getPlayerNum()*35) + (players[i].getCat().getPlanet().getIndex()[1]*190);
+            int y = 160 + (players[i].getCat().getPlanet().getIndex()[0]*110);
+            Circle catLoc = new Circle(x,y,15);
+            if(players[i].getPlayerNum() == 0){ //CHANGE TO CAT ICONS! possible with P1 Text or something
+                catLoc.setFill(Color.GREEN);
+            }
+            if(players[i].getPlayerNum() == 1){
+                catLoc.setFill(Color.RED);
+            }
+            catIcons[i] = catLoc;
+        }
+
+        return catIcons;
+    }
+
+	//Update Game info displayed
+    public Text[] displayCurrentTurn(int playerTurn, int actionsLeft){
+        Text[] toAdd = new Text[2];
+
+        Text currTurn = new Text();
+        Text actionsRemain = new Text();
+
+        currTurn.setText("Current Turn: Player " + playerTurn);
+        actionsRemain.setText("Actions Remaining: " + actionsLeft);
+
+        currTurn.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        currTurn.setX(25);
+        currTurn.setY(25);
+        currTurn.setFill(Color.WHITE);
+
+        actionsRemain.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        actionsRemain.setX(25);
+        actionsRemain.setY(475);
+
+        toAdd[0] = currTurn;
+        toAdd[1] = actionsRemain;
+        return toAdd;
+    }
+
+	//Update resist cards available
+	public Rectangle[] displayResistCards(Player player){
+		Rectangle[] cardIcons = new Rectangle[3];
+		for(int i = 0; i < 3; i++){
+			Rectangle rect = new Rectangle(880,70+(175*i),140,160);
+			rect.setFill(Color.ORANGE);
+			cardIcons[i] = rect;
+		}
+		return cardIcons;
+	}
 
     public Title getTitle(String titleText){
         Title title = new Title (titleText);
