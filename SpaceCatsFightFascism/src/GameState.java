@@ -139,7 +139,7 @@ public class GameState {
                 //when 3 tokens are removed in a single turn (tracked by a constant that will be here or in gamecontroller) give an option for this card
             }
         };
-
+        //why did i make this all have SC
         aliasSC = new Cat("Alias:SC", 3, alias);
         pipSC = new Cat("Pip", 8, pip);
         jasperSC = new Cat("Jasper", 6, jasper);
@@ -371,7 +371,7 @@ public class GameState {
         while(n >= 0)
         {
             outDeck.addCard(liberation);
-            print(outDeck.getSize());
+            System.out.println(outDeck.getSize());
             n--;
         }
         n = 6;
