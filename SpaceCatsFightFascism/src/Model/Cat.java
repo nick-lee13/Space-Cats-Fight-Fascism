@@ -10,7 +10,7 @@ public class Cat {
 
     private Circle catIcon;
 
-    public Cat(String inName, int inHomePlanet, AbilityCard inAbility) { // Constructor does not include planet and scratch count 
+    public Cat(String inName, int inHomePlanet, Card inAbility) { // Constructor does not include planet and scratch count 
                                                                             // since they are informed by the players actions.
             name = inName;
             homePlanet= inHomePlanet;
