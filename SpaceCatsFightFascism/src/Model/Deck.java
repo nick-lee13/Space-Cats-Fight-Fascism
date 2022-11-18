@@ -29,4 +29,8 @@ public class Deck {
     public void shuffle() { // Shuffles the cards in the deck
         Collections.shuffle(cards);
     }
+
+    public int getSize(){
+        return cards.size();
+    }
 }

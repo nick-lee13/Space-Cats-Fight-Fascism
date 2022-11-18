@@ -6,10 +6,15 @@ import java.util.Random;
 class GameController {
     private GameState gameState;
     private Random randNumGenerator;
+    private int actionCount;
 
     // Runs the main logic for a single player's turn
     public void runTurn() {
+        actionCount = 3;
+        while(actionCount > 0)
+        {
 
+        }
     }
 
     // Increases the facism scale by 1
@@ -104,6 +109,7 @@ class GameController {
             outPlanet = gameState.getPlanetLayout()[currIndex[0]][currIndex[1] + 1];
         }
         cat.setPlanet(outPlanet);
+        actionCount--;
         return true;
     }
 
@@ -113,16 +119,28 @@ class GameController {
         
         if (planet.getTokens() < 0) {
             planet.setTokenCount(planet.getTokens() + 1);
+            actionCount--;
+            return true;
         }
+        return false;
     }
 
     // Restock action for the current player
     public void restock() {
         Deck deck = gameState.getPlayers()[gameState.getPlayerTurn()].getDeck();
 
-        while (deck.getCards().size() < 4) {
-            deck.addCard(drawResistCard());
+        if(deck.getSize() == 3)
+        {
+            return false;
         }
+        else
+        {
+            while (deck.getCards().size() < 4) {
+                deck.addCard(drawResistCard());
+            }
+        }
+        return true;
+        
     }
 
     // Play card action for the current player
