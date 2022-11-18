@@ -65,9 +65,46 @@ class GameController {
     }
 
     // Travel action for the current player
-    public void travel(Planet planet) {
+    public boolean travel(int direction) {
         Cat cat = gameState.getPlayers()[gameState.getPlayerTurn()].getCat();
-        cat.setPlanet(planet);
+        Planet currPlanet = cat.getPlanet();
+        int[] currIndex = currPlanet.getIndex()
+        Planet outPlanet;
+        //oh boy is this ever not scalable
+        if(direction == 0)
+        {
+            if(currIndex[0] + 1 > 2)
+            {
+                return false
+            }
+            outPlanet = gameState.getPlanetLayout()[currIndex[0] + 1][currIndex[1]];
+        }
+        if(direction == 1)
+        {
+            if(currIndex[0] - 1 < 0)
+            {
+                return false
+            }
+            outPlanet = gameState.getPlanetLayout()[currIndex[0]][currIndex[1] - 1];
+        }
+        if(direction == 2)
+        {   
+            if(currIndex[1] - 1 < 0)
+            {
+                return false
+            }
+            outPlanet = gameState.getPlanetLayout()[currIndex[0] - 1][currIndex[1]];
+        }
+        if(direction == 3)
+        {
+            if(currIndex[1] + 1 > 3)
+            {
+                return false
+            }
+            outPlanet = gameState.getPlanetLayout()[currIndex[0]][currIndex[1] + 1];
+        }
+        cat.setPlanet(outPlanet);
+        return true;
     }
 
     // Fight action for the current player
