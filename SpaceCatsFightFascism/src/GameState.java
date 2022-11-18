@@ -115,12 +115,12 @@ public class GameState {
                 {
                     if(resistDeck.getSize() != 0)
                     {
-                        players[playerTurn].addCard(resistDeck.removeCard(resistCards.getFirst()));
+                        players[playerTurn].addCard(resistDeck.removeCard(resistDeck.getFirst()));
                     }
                     else
                     {
                         replaceResistDeck();
-                        players[playerTurn].addCard(resistDeck.removeCard(resistCards.getFirst()));
+                        players[playerTurn].addCard(resistDeck.removeCard(resistDeck.getFirst()));
                     }
                 }
                 
