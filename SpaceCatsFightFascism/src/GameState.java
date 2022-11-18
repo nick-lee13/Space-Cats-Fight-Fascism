@@ -63,7 +63,7 @@ public class GameState {
         initTokens();
         
 
-        playerTurn = 1;
+        playerTurn = 0;
 
     }
 
@@ -409,7 +409,7 @@ public class GameState {
                 setFascismScale(getFascismScale() + 1);
                 for(int i = 0; i < discard.getOwner().getDeck().getCards().size(); i++)
                 {
-                    Card card = players[playerTurn - 1].getDeck().getCards().remove();
+                    Card card = players[playerTurn].getDeck().getCards().remove();
                     resistUsedDeck.addCard(card);
                 }
                 galaxyNewsUsedDeck.addCard(discard);
@@ -418,9 +418,9 @@ public class GameState {
 
         scratchlocal.playAction = new CardAction(){
             public void action(){
-                Planet currPlanet = players[playerTurn - 1].getCat().getPlanet();
+                Planet currPlanet = players[playerTurn].getCat().getPlanet();
 
-                players[playerTurn - 1].getCat().getPlanet().setTokenCount(currplanet.getTokens() - 1);
+                players[playerTurn].getCat().getPlanet().setTokenCount(currplanet.getTokens() - 1);
 
                 for(int i = 0; i < players.length; i++)
                 {
@@ -438,7 +438,7 @@ public class GameState {
             public void action(){
                 Planet currPlanet = players[playerTurn - 1].getCat().getPlanet();
 
-                players[playerTurn - 1].getCat().getPlanet().setTokenCount(currplanet.getTokens() - 1);
+                players[playerTurn].getCat().getPlanet().setTokenCount(currplanet.getTokens() - 1);
 
                 for(int i = 0; i < players.length; i++)
                 {
@@ -456,8 +456,8 @@ public class GameState {
 
         scratch2.playAction = new CardAction(){
             public void action(){
-                players[playerTurn - 1].getCat().setScratchCount(players[playerTurn - 1].getCat().getScratchCount() + 2);
-                players[playerTurn - 1].getCat().setPlanet(findPlanet(players[playerTurn - 1].getCat().getHomePlanet()));
+                players[playerTurn].getCat().setScratchCount(players[playerTurn].getCat().getScratchCount() + 2);
+                players[playerTurn].getCat().setPlanet(findPlanet(players[playerTurn].getCat().getHomePlanet()));
 
                 galaxyNewsUsedDeck.addCard(scratch2);
             }
@@ -467,7 +467,7 @@ public class GameState {
             public void action(){
                 setFascismScale(getFascismScale() + 1);
 
-                players[playerTurn - 1].getCat().setScratchCount(players[playerTurn - 1].getCat().getScratchCount() + 1);
+                players[playerTurn].getCat().setScratchCount(players[playerTurn].getCat().getScratchCount() + 1);
 
                 galaxyNewsUsedDeck.addCard(scratch1);
             }
@@ -595,6 +595,11 @@ public class GameState {
     public int getDiceRollCount()
     {
         return diceRollCount;
+    }
+
+    public void setPlayerTurn(int turn)
+    {
+        playerTurn = turn;
     }
 
     public void setFascismScale(int scale)

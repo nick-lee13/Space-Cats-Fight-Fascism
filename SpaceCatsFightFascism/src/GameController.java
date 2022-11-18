@@ -7,16 +7,33 @@ class GameController {
     private GameState gameState;
     private Random randNumGenerator;
     private int actionCount;
+    View view = new View(); 
 
     // Runs the main logic for a single player's turn
     public void runTurn() {
         actionCount = 3;
         while(actionCount > 0)
         {
-
+            
         }
+
     }
 
+    public void actionTaken()
+    {
+        actionCount--;
+        if(actionCount == 0)
+        {
+            if(gameState.getPlayerTurn() + 1 > gameState.getPlayers().length - 1)
+            {
+                gameState.setPlayerTurn(0);
+            }
+            else
+            {
+                gameState.setPlayerTurn(gameState.getPlayerTurn() + 1);
+            }
+        }
+    }
     // Increases the facism scale by 1
     public void increaseFacism() {
         gameState.setFascismScale(gameState.getFascismScale() + 1);
@@ -155,7 +172,11 @@ class GameController {
     }
 
     public void startGame() {
-        
+        gameState = new gameState();
+        view = new View();
+        view.initDisplay();
+        actionCount = 3;
+        runTurn();
     }
 
     public GameState getGameState() {
