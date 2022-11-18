@@ -111,7 +111,7 @@ public class GameState {
         alias.playAction = new CardAction(){
             public void action(){
                 //when fightfascism is called by a player with this cat as their cat, have an option that plays their abilitycard
-                if(players[playerTurn].getDeck().getSize() < 3)
+                /*if(players[playerTurn].getDeck().getSize() < 3)
                 {
                     if(resistDeck.getSize() != 0)
                     {
@@ -122,7 +122,7 @@ public class GameState {
                         replaceResistDeck();
                         players[playerTurn].addCard(resistDeck.removeCard(resistDeck.getCards().getFirst()));
                     }
-                }
+                }*/
                 
             }
         };
