@@ -6,7 +6,8 @@ public class Planet {
     String symbol;
     Image img;
     int x,y;
-
+    boolean liberated;
+    boolean occupied;
     public Planet(int inId, int index, int indey) {
             id = inId;
             tokenCount = 0;
@@ -17,11 +18,12 @@ public class Planet {
     }
 
     public boolean isLiberated() {
-        if(tokenCount < 4)
-            return true;
-        return false;
+        return liberated;
     }
 
+    public boolean isOccupied(){
+        return occupied;
+    }
     public int getId() {
         return id;
     }
@@ -32,6 +34,22 @@ public class Planet {
 
     public void setTokens(int inToken) {
         tokenCount = inToken;
+        if(tokenCount > 3)
+        {
+            liberated = true;
+        }
+        else
+        {
+            liberated = false;
+        }
+        if(tokenCount < -3)
+        {
+            occupied = true;
+        }
+        else
+        {
+            occupied = false;
+        }
     }
 
     public void setSymbol(String inSymbol)
