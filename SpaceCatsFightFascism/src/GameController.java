@@ -38,7 +38,7 @@ class GameController {
             {
                 int roll = rollDice();
                 Planet currPlanet = gameState.findPlanet(roll);
-                currPlanet.setTokenCount(currPlanet.getTokenCount() + 1);
+                currPlanet.setTokens(currPlanet.getTokens() + 1);
                 //something seems smelly around here
                 for(int j = 0; j < gameState.getPlayers().length; j++)
                 {
@@ -156,7 +156,7 @@ class GameController {
         Planet planet = gameState.getPlayers()[gameState.getPlayerTurn()].getCat().getPlanet();
         
         if (planet.getTokens() < 0) {
-            planet.setTokenCount(planet.getTokens() + 1);
+            planet.setTokens(planet.getTokens() + 1);
             actionCount--;
             return true;
         }
