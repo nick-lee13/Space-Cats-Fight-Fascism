@@ -8,7 +8,7 @@ class GameController {
     private GameState gameState;
     private Random randNumGenerator;
     private int actionCount;
-    DisplayerUpdater view;
+    DisplayUpdater view;
 
     // Runs the main logic for a single player's turn
     //((POTENTIALLY OBSOLETE))
