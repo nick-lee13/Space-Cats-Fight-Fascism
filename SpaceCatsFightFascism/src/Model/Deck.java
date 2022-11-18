@@ -8,7 +8,6 @@ public class Deck {
 
     public Deck(Player inOwner) { // Deck Constructor
             // Body
-        this.shuffle();
         owner = inOwner;
     }
 
