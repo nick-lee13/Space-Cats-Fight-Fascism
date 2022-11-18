@@ -36,6 +36,7 @@ class GameController {
             }
             for(int i = 0; i < gameState.getDiceRollCount(); i++)
             {
+                i = i + gameState.getTokensRemoved();
                 int roll = rollDice();
                 Planet currPlanet = gameState.findPlanet(roll);
                 currPlanet.setTokenCount(currPlanet.getTokenCount() + 1);
@@ -49,6 +50,7 @@ class GameController {
                 }
 
             }
+            gameState.setTokensRemoved(0);
             gameState.setRollDiceCount(2 + (int) Math.floor(gameState.getFascismScale()/7));
         }
     }
@@ -152,11 +154,14 @@ class GameController {
     }
 
     // Fight action for the current player
+    //will likely move this to be a method in the cat class that the individual cats can override if necessary in the future
     public boolean fight() {
-        Planet planet = gameState.getPlayers()[gameState.getPlayerTurn()].getCat().getPlanet();
-        
+        Cat pCat = gameState.getPlayers()[gameState.getPlayerTurn()].getCat()
+        Planet planet = pCat.getPlanet();
+        if(pCat.getAbilityCard())
         if (planet.getTokens() < 0) {
             planet.setTokenCount(planet.getTokens() + 1);
+            gameState.setTokensRemoved(gameState.getTokensRemoved() + 1);
             actionCount--;
             return true;
         }
