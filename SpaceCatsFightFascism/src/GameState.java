@@ -57,6 +57,7 @@ public class GameState {
         resistDeck = initResistDeck();
         System.out.println("Deck size is " + resistDeck.getSize());
         galaxyNewsDeck = initGalaxyNewsDeck();
+        System.out.println("Deck 2 size is " + galaxyNewsDeck.getSize());
         resistUsedDeck = new Deck(null);
         galaxyNewsUsedDeck = new Deck(null);
 
