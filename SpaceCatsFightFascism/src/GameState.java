@@ -262,13 +262,13 @@ public class GameState {
                     else
                     {
                         //ADD ERROR MESSAGE HERE
-                        whiskersymbol.owner.addCard(whiskersymbol);
+                        whiskersymbol.owner.getDeck().addCard(whiskersymbol);
                     }
                 }
                 else
                 {
                     //ADD ERROR MESSAGE HERE
-                    whiskersymbol.owner.addCard(whiskersymbol);
+                    whiskersymbol.owner.getDeck().addCard(whiskersymbol);
                 }
             }
         };
@@ -285,13 +285,13 @@ public class GameState {
                     else
                     {
                         //ADD ERROR MESSAGE HERE
-                        earsymbol.owner.addCard(earsymbol);
+                        earsymbol.owner.getDeck().addCard(earsymbol);
                     }
                 }
                 else
                 {
                     //ADD ERROR MESSAGE HERE
-                    earsymbol.owner.addCard(earsymbol);
+                    earsymbol.owner.getDeck().addCard(earsymbol);
                 }
             }
         };
@@ -308,13 +308,13 @@ public class GameState {
                     else
                     {
                         //ADD ERROR MESSAGE HERE
-                        tailsymbol.owner.addCard(tailsymbol);
+                        tailsymbol.owner.getDeck().addCard(tailsymbol);
                     }
                 }
                 else
                 {
                     //ADD ERROR MESSAGE HERE
-                    tailsymbol.owner.addCard(tailsymbol);
+                    tailsymbol.owner.getDeck().addCard(tailsymbol);
                 }
             }
         };
@@ -331,13 +331,13 @@ public class GameState {
                     else
                     {
                         //ADD ERROR MESSAGE HERE
-                        pawsymbol.owner.addCard(pawsymbol);
+                        pawsymbol.owner.getDeck().addCard(pawsymbol);
                     }
                 }
                 else
                 {
                     //ADD ERROR MESSAGE HERE
-                    pawsymbol.owner.addCard(pawsymbol);
+                    pawsymbol.owner.getDeck().addCard(pawsymbol);
                 }
             }
         };
