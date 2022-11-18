@@ -90,40 +90,43 @@ class GameController {
     public boolean travel(int direction) {
         Cat cat = gameState.getPlayers()[gameState.getPlayerTurn()].getCat();
         Planet currPlanet = cat.getPlanet();
-        int[] currIndex = currPlanet.getIndex()
+        int[] currIndex = currPlanet.getIndex();
         Planet outPlanet;
         //oh boy is this ever not scalable
         if(direction == 0)
         {
             if(currIndex[0] + 1 > 2)
             {
-                return false
+                return false;
             }
             outPlanet = gameState.getPlanetLayout()[currIndex[0] + 1][currIndex[1]];
         }
-        if(direction == 1)
+        else if(direction == 1)
         {
             if(currIndex[0] - 1 < 0)
             {
-                return false
+                return false;
             }
             outPlanet = gameState.getPlanetLayout()[currIndex[0]][currIndex[1] - 1];
         }
-        if(direction == 2)
+        else if(direction == 2)
         {   
             if(currIndex[1] - 1 < 0)
             {
-                return false
+                return false;
             }
             outPlanet = gameState.getPlanetLayout()[currIndex[0] - 1][currIndex[1]];
         }
-        if(direction == 3)
+        else if(direction == 3)
         {
             if(currIndex[1] + 1 > 3)
             {
-                return false
+                return false;
             }
             outPlanet = gameState.getPlanetLayout()[currIndex[0]][currIndex[1] + 1];
+        }
+        else{
+            outPlanet = gameState.getPlanetLayout()[currIndex[0]][currIndex[1]];
         }
         cat.setPlanet(outPlanet);
         actionCount--;
@@ -131,7 +134,7 @@ class GameController {
     }
 
     // Fight action for the current player
-    public void fight() {
+    public boolean fight() {
         Planet planet = gameState.getPlayers()[gameState.getPlayerTurn()].getCat().getPlanet();
         
         if (planet.getTokens() < 0) {
@@ -143,7 +146,7 @@ class GameController {
     }
 
     // Restock action for the current player
-    public void restock() {
+    public boolean restock() {
         Deck deck = gameState.getPlayers()[gameState.getPlayerTurn()].getDeck();
 
         if(deck.getSize() == 3)
@@ -172,8 +175,8 @@ class GameController {
     }
 
     public void startGame() {
-        gameState = new gameState();
-        view = new View();
+        gameState = new GameState();
+        DisplayUpdater view = new DisplayUpdater();
         view.initDisplay();
         actionCount = 3;
         runTurn();
