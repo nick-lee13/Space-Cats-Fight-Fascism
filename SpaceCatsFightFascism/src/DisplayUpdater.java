@@ -22,13 +22,14 @@ public class DisplayUpdater extends Application {
     Rectangle[][] planetIcons;
     Planet[][] planetLayout = new Planet[3][4];
     Text[][] tokenCounts;
+    String broadcast;
 
     Pane root;
     Scene scene;
 
     //DEV TESTING DELETE
-    Cat cat1 = new Cat("Ophelia", 3, null);
-    Cat cat2 = new Cat("Alias:SC", 6, null);
+    Cat cat1 = new Cat("Ophelia", 3, new AbilityCard("TEST"));
+    Cat cat2 = new Cat("Alias:SC", 6, new AbilityCard("TEST"));
     Planet plan1 = new Planet(3, 0, 2);
     Planet plan2 = new Planet(10, 2, 1);
     Player plyr1 = new Player(0,cat1);
@@ -107,7 +108,7 @@ public class DisplayUpdater extends Application {
 
     public void redisplay(){
         if(!firstRun){
-            root.getChildren().remove(23, 54);
+            root.getChildren().remove(23, 55);
         }
         else{
             firstRun = false;
@@ -126,6 +127,9 @@ public class DisplayUpdater extends Application {
         //gc.getGameState().getPlayerTurn()
         //gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getActionsRemaining()
 
+        //Display game broadcast
+        root.getChildren().addAll(gameMessage(broadcast));
+
         // Draw Resist Cards
 
         root.getChildren().addAll(setResistEvents(gameElements.displayResistCards(plyr1)));
@@ -141,14 +145,31 @@ public class DisplayUpdater extends Application {
         return rect;
     }
 
+    private Text gameMessage(String msg){
+        Text txt = new Text(20, 590, msg);
+        txt.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        txt.setFill(Color.RED);
+        return txt;
+    }
+
     private Button[] setButtonEvents(Button[] playerActions){
         // Travel Up
         playerActions[0].setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("TRAVEL UP BUTTON PRESSED");
+                /*System.out.println("TRAVEL UP BUTTON PRESSED");
                 cat1.setPlanet(plan1);
                 System.out.println(root.getChildren().size());
+                broadcast = "This is a test! blah blah blah blah blah!";
+                redisplay();*/
+
+                boolean validMove = gc.travel(0);
+                if(validMove){
+                    gameMessage("Move Up Successful!");
+                }
+                else{
+                    gameMessage("You've reached the end of the galaxy! You can not move up!");
+                }
                 redisplay();
             }
         });
@@ -158,7 +179,17 @@ public class DisplayUpdater extends Application {
             public void handle(ActionEvent event) {
                 System.out.println("TRAVEL DOWN BUTTON PRESSED");
                 cat1.setPlanet(plan2);
+                broadcast = "You pressed down button!";
                 redisplay();
+
+                /*boolean validMove = gc.travel(2);
+                if(validMove){
+                    gameMessage("Move Down Successful!");
+                }
+                else{
+                    gameMessage("You've reached the end of the galaxy! You can not move Down!");
+                }
+                redisplay();*/
             }
         });
         // Travel Left
