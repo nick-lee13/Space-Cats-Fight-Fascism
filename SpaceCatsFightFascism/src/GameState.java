@@ -23,8 +23,8 @@ public class GameState {
     private int fascistTokenCount;
     private int diceRollCount;
 
-    ResistCard liberation, heal1, heal2, fascist2, teleport, whiskersymbol, earsymbol, tailsymbol, pawsymbol;
-    GalacticNewsCard discard, scratchlocal, scratchscale, scratch1, scratch2;
+    Card liberation, heal1, heal2, fascist2, teleport, whiskersymbol, earsymbol, tailsymbol, pawsymbol;
+    Card discard, scratchlocal, scratchscale, scratch1, scratch2;
 
     //Initializes a new GameState, to be edited at the start of the game.
     public GameState()
@@ -88,10 +88,10 @@ public class GameState {
 
         Cat aliasSC, pipSC, jasperSC, opheliaSC;
 
-        AbilityCard alias = new Card("Hacker");
-        AbilityCard pip = new Card("Freedom Fighter");
-        AbilityCard jasper = new Card("Laser Eyes");
-        AbilityCard ophelia = new Card("Escape Artist");
+        Card alias = new AbilityCard("Hacker");
+        Card pip = new AbilityCard("Freedom Fighter");
+        Card jasper = new AbilityCard("Laser Eyes");
+        Card ophelia = new AbilityCard("Escape Artist");
 
 
         //could these be cards that are implicit in a separate cat class for each individual cat?
@@ -153,16 +153,16 @@ public class GameState {
         }*/
         Deck outDeck = new Deck(null);
 
-        ResistCard liberation = new Card("+1 Liberation");
-        ResistCard heal1 = new Card("Heal 1");
-        ResistCard heal2 = new Card("Heal 2");
-        ResistCard fascist2 = new Card("-2 Fascists");
-        ResistCard teleport = new Card("Teleport");
+        Card liberation = new ResistCard("+1 Liberation");
+        Card heal1 = new ResistCard("Heal 1");
+        Card heal2 = new ResistCard("Heal 2");
+        Card fascist2 = new ResistCard("-2 Fascists");
+        Card teleport = new ResistCard("Teleport");
         //consider making a SymbolCard extending ResistCard as these below ones have duplicate code
-        ResistCard whiskersymbol = new Card("Whisker Liberation");
-        ResistCard earsymbol = new Card("Ear Liberation");
-        ResistCard tailsymbol = new Card("Tail Liberation");
-        ResistCard pawsymbol = new Card("Paw Liberation");
+        Card whiskersymbol = new ResistCard("Whisker Liberation");
+        Card earsymbol = new ResistCard("Ear Liberation");
+        Card tailsymbol = new ResistCard("Tail Liberation");
+        Card pawsymbol = new ResistCard("Paw Liberation");
         
         //A lot of the else statements here are creating duplicate cards due to the playcard method, so I will have to figure out a cleaner way to do the used piles
         liberation.playAction = new CardAction(){
@@ -396,11 +396,11 @@ public class GameState {
 
         Deck outDeck = new Deck(null);
 
-        GalacticNewsCard discard = new GalacticNewsCard("Catnip is Criminalized");
-        GalacticNewsCard scratchlocal = new GalacticNewsCard("Cat Arrests on All Planets");
-        GalacticNewsCard scratchscale =  new GalacticNewsCard("Cat Power in Decline");
-        GalacticNewsCard scratch2 = new GalacticNewsCard("Corporations Fund the Anti-Cat Campaign");
-        GalacticNewsCard scratch1 = new GalacticNewsCard("Martial Law is Declared");
+        Card discard = new GalacticNewsCard("Catnip is Criminalized");
+        Card scratchlocal = new GalacticNewsCard("Cat Arrests on All Planets");
+        Card scratchscale =  new GalacticNewsCard("Cat Power in Decline");
+        Card scratch2 = new GalacticNewsCard("Corporations Fund the Anti-Cat Campaign");
+        Card scratch1 = new GalacticNewsCard("Martial Law is Declared");
 
         discard.playAction = new CardAction(){
             public void action(){
