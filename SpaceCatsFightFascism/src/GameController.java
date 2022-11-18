@@ -38,7 +38,7 @@ class GameController {
             {
                 int roll = rollDice();
                 Planet currPlanet = gameState.findPlanet(roll);
-                currPlanet.setTokens(currPlanet.getTokens() + 1);
+                currPlanet.setTokenCount(currPlanet.getTokenCount() + 1);
                 //something seems smelly around here
                 for(int j = 0; j < gameState.getPlayers().length; j++)
                 {
@@ -147,7 +147,7 @@ class GameController {
             outPlanet = gameState.getPlanetLayout()[currIndex[0]][currIndex[1]];
         }
         cat.setPlanet(outPlanet);
-        actionCount--;
+        actionTaken();
         return true;
     }
 
@@ -156,7 +156,7 @@ class GameController {
         Planet planet = gameState.getPlayers()[gameState.getPlayerTurn()].getCat().getPlanet();
         
         if (planet.getTokens() < 0) {
-            planet.setTokens(planet.getTokens() + 1);
+            planet.setTokenCount(planet.getTokens() + 1);
             actionCount--;
             return true;
         }
@@ -176,6 +176,7 @@ class GameController {
             while (deck.getCards().size() < 4) {
                 deck.addCard(drawResistCard());
             }
+            actionTaken();
         }
         return true;
         
@@ -188,6 +189,7 @@ class GameController {
         { 
             gameState.getResistUsedDeck().addCard(card);
         }
+        actionTaken();
         //add code here that removes the card from the players hand somehow
         //or add the code in the action that leads to this action, whatever works
     }

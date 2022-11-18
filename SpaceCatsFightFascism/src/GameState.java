@@ -71,7 +71,7 @@ public class GameState {
     public void placeLibToken(Planet planet)
     {
         int current_token = planet.getTokens();
-        planet.setTokenCount(current_token + 1);
+        planet.setTokens(current_token + 1);
         fascistTokenCount--;
     }
 
@@ -79,7 +79,7 @@ public class GameState {
     public void placeFascistToken(Planet planet)
     {
         int current_token = planet.getTokens();
-        planet.setTokenCount(current_token - 1);
+        planet.setTokens(current_token - 1);
         fascistTokenCount++;
     }
 
@@ -177,7 +177,7 @@ public class GameState {
             }
             else
             {
-                liberation.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 1);
+                liberation.owner.getCat().getPlanet().setTokens(currPlanet.getTokens() + 1);
             }
              
         }
@@ -228,11 +228,11 @@ public class GameState {
                 {
                     if(currPlanet.getTokens() + 2 > 0)
                     {
-                        fascist2.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 1);
+                        fascist2.owner.getCat().getPlanet().setTokens(currPlanet.getTokens() + 1);
                     }
                     else
                     {
-                        fascist2.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 2);
+                        fascist2.owner.getCat().getPlanet().setTokens(currPlanet.getTokens() + 2);
                     }
                 }
                 else
@@ -259,7 +259,7 @@ public class GameState {
                 {
                     if(currPlanet.getTokens() >= 0)
                     {
-                        whiskersymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 2);
+                        whiskersymbol.owner.getCat().getPlanet().setTokens(currPlanet.getTokens() + 2);
                     }
                     else
                     {
@@ -282,7 +282,7 @@ public class GameState {
                 {
                     if(currPlanet.getTokens() >= 0)
                     {
-                        earsymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 2);
+                        earsymbol.owner.getCat().getPlanet().setTokens(currPlanet.getTokens() + 2);
                     }
                     else
                     {
@@ -305,7 +305,7 @@ public class GameState {
                 {
                     if(currPlanet.getTokens() >= 0)
                     {
-                        tailsymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 2);
+                        tailsymbol.owner.getCat().getPlanet().setTokens(currPlanet.getTokens() + 2);
                     }
                     else
                     {
@@ -328,7 +328,7 @@ public class GameState {
                 {
                     if(currPlanet.getTokens() >= 0)
                     {
-                        pawsymbol.owner.getCat().getPlanet().setTokenCount(currPlanet.getTokens() + 2);
+                        pawsymbol.owner.getCat().getPlanet().setTokens(currPlanet.getTokens() + 2);
                     }
                     else
                     {
@@ -420,7 +420,7 @@ public class GameState {
             public void action(){
                 Planet currPlanet = players[playerTurn].getCat().getPlanet();
 
-                players[playerTurn].getCat().getPlanet().setTokenCount(currPlanet.getTokens() - 1);
+                players[playerTurn].getCat().getPlanet().setTokens(currPlanet.getTokens() - 1);
 
                 for(int i = 0; i < players.length; i++)
                 {
@@ -438,7 +438,7 @@ public class GameState {
             public void action(){
                 Planet currPlanet = players[playerTurn - 1].getCat().getPlanet();
 
-                players[playerTurn].getCat().getPlanet().setTokenCount(currPlanet.getTokens() - 1);
+                players[playerTurn].getCat().getPlanet().setTokens(currPlanet.getTokens() - 1);
 
                 for(int i = 0; i < players.length; i++)
                 {
