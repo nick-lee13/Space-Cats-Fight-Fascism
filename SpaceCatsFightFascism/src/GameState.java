@@ -24,7 +24,7 @@ public class GameState {
     private int diceRollCount;
 
     ResistCard liberation, heal1, heal2, fascist2, teleport, whiskersymbol, earsymbol, tailsymbol, pawsymbol;
-    GalaxyNewsCard discard, scratchlocal, scratchscale, scratch1, scratch2;
+    GalacticNewsCard discard, scratchlocal, scratchscale, scratch1, scratch2;
 
     //Initializes a new GameState, to be edited at the start of the game.
     public GameState()
@@ -39,9 +39,9 @@ public class GameState {
 
         //edit below for when it is not restricted
         fascismScale = DEFAULT_DIFFICULTY;
-        players = new Player[DEFAULT_PLAYERS]
+        players = new Player[DEFAULT_PLAYERS];
         catRoster = initCatRoster();
-        for(int i = 0, i < players.length; i++)
+        for(int i = 0; i < players.length; i++)
         {
             players[i] = new Player(catRoster[i])
         }
@@ -517,10 +517,10 @@ public class GameState {
     {
         for(int i = 0; i < planetLayout.length; i++)
         {
-            for(int j = 0; j < planetLayout[].length; j++)
+            for(int j = 0; j < planetLayout.length; j++)
             {
                 Planet currPlanet = planetLayout[i][j];
-                if(currPlanet.getID() == id)
+                if(currPlanet.getId() == id)
                 {
                     return currPlanet;
                 }
@@ -533,14 +533,14 @@ public class GameState {
     {
         galaxyNewsUsedDeck.shuffle();
         galaxyNewsDeck = galaxyNewsUsedDeck;
-        galaxyNewsUsedDeck = new Deck();
+        galaxyNewsUsedDeck = new Deck(null); // Was Missing an Owner so I passed in a null value @Alphabetical1
     }
 
     public void replaceResistDeck()
     {
         resistUsedDeck.shuffle();
         resistDeck = resistUsedDeck;
-        resistUsedDeck = new Deck();
+        resistUsedDeck = new Deck(null); // Was Missing an Owner so I passed in a null value @Alphabetical1
     }
 
     //You may ask: "Cameron, whats the point of making the local variables private if the getters return the variable anyways?"
@@ -633,7 +633,7 @@ public class GameState {
     {
         planetLayout = new Planet[3][4];
         Random rand = new Random();
-        Set<int> visited = new Set<int>;
+        Set<Integer> visited = new TreeSet<Integer>(); // Set is only an interface so it needed a "Set" implementation, chose treeset at random @Alphabetical1
         for(int i = 0; i < 3; i++)
         {
             for(int j = 0; j < 4; j++)
@@ -643,7 +643,7 @@ public class GameState {
                 //while the random number has been rolled already
                 while(visited.contains(n))
                 {
-                    int n = rand.nextInt(12) + 1;
+                    n = rand.nextInt(12) + 1;
                 }
                 //add new planet with the numbered ID
                 planetLayout[i][j] = new Planet(n, i, j);
