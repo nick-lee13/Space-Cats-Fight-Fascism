@@ -182,4 +182,9 @@ class GameController {
     public GameState getGameState() {
         return gameState;
     }
+
+    public static void main(String[] args)
+    {
+        startGame();
+    }
 }
