@@ -10,14 +10,15 @@ class GameController {
     DisplayerUpdater view;
 
     // Runs the main logic for a single player's turn
-    public void runTurn() {
+    //((POTENTIALLY OBSOLETE))
+    /*public void runTurn() {
         actionCount = 3;
         while(actionCount > 0)
         {
             
         }
 
-    }
+    }*/
 
     public void actionTaken()
     {
@@ -179,7 +180,7 @@ class GameController {
         DisplayUpdater view = new DisplayUpdater();
         view.initDisplay();
         actionCount = 3;
-        runTurn();
+        //runTurn();
     }
 
     public GameState getGameState() {
