@@ -41,6 +41,7 @@ public class DisplayUpdater extends Application {
     @Override
     public void start(Stage stage){
 
+        gc.startGame();
         root = new Pane();
         scene = new Scene(root, 1050, 600);
 
@@ -55,7 +56,7 @@ public class DisplayUpdater extends Application {
         root.getChildren().add(resistMenu);
         
         //Draw Planets
-        root.getChildren().addAll(gameElements.drawPlanets(planetLayout)); //REPLACE WITH gc.getGameState().getPlanetLayout()
+        root.getChildren().addAll(gameElements.drawPlanets(gc.getGameState().getPlanetLayout()));
 
         //DEV TESTING DELETE
         plan1.setIndex(2, 3);
@@ -114,16 +115,16 @@ public class DisplayUpdater extends Application {
             firstRun = false;
         }
         //Draw token counters
-        root.getChildren().addAll(gameElements.updateTokenCounters(planetLayout)); //REPLACE WITH gc.getGameState().getPlanetLayout()
+        root.getChildren().addAll(gameElements.updateTokenCounters(gc.getGameState().getPlanetLayout()));
 
         //Draw Flags
-        root.getChildren().addAll(gameElements.drawFlags(planetLayout));//REPLACE WITH gc.getGameState().getPlanetLayout()
+        root.getChildren().addAll(gameElements.drawFlags(gc.getGameState().getPlanetLayout()));
 
         //draw Cats
-        root.getChildren().addAll(gameElements.drawCats(players));
+        root.getChildren().addAll(gameElements.drawCats(gc.getGameState().getPlayers()));
 
         //Display turn info
-        root.getChildren().addAll(gameElements.displayCurrentTurn(1,3));
+        root.getChildren().addAll(gameElements.displayCurrentTurn(gc.getGameState().getPlayerTurn(),gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getActionsRemaining()));
         //gc.getGameState().getPlayerTurn()
         //gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getActionsRemaining()
 
