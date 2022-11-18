@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.Random;
+import java.lang.Math;
 
 // GameController manages the main game logic and player behaviour functions
 
@@ -33,6 +34,22 @@ class GameController {
             {
                 gameState.setPlayerTurn(gameState.getPlayerTurn() + 1);
             }
+            for(int i = 0; i < gameState.getDiceRollCount(); i++)
+            {
+                int roll = rollDice();
+                Planet currPlanet = gameState.findPlanet(roll);
+                currPlanet.setTokenCount(currPlanet.getTokenCount() + 1);
+                //something seems smelly around here
+                for(int j = 0; j < gameState.getPlayers().length; j++)
+                {
+                    if(gameState.getPlayers()[j].getCat().getPlanet() == currPlanet)
+                    {
+                        gameState.getPlayers()[j].getCat().setScratchCount(players[j].getCat().getScratchCount() + 1);
+                    }
+                }
+
+            }
+            gameState.setRollDiceCount(2 + (int) Math.floor(gameState.getFascismScale()/7));
         }
     }
     // Increases the facism scale by 1

@@ -515,7 +515,7 @@ public class GameState {
     }
 
     //Helper function to return a planet given a planet ID by searching through the planet layout.
-    private Planet findPlanet(int id)
+    public Planet findPlanet(int id)
     {
         for(int i = 0; i < planetLayout.length; i++)
         {
