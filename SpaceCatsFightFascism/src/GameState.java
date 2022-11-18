@@ -252,7 +252,7 @@ public class GameState {
 
         whiskersymbol.playAction = new CardAction(){
             public void action(){
-                currPlanet = whiskersymbol.owner.getCat().getPlanet();
+                Planet currPlanet = whiskersymbol.owner.getCat().getPlanet();
                 if(currPlanet.getSymbol() = "Whiskers")
                 {
                     if(currPlanet.getTokens() >= 0)
@@ -275,7 +275,7 @@ public class GameState {
 
         earsymbol.playAction = new CardAction(){
             public void action(){
-                currPlanet = earsymbol.owner.getCat().getPlanet();
+                Planet currPlanet = earsymbol.owner.getCat().getPlanet();
                 if(currPlanet.getSymbol() = "Ears")
                 {
                     if(currPlanet.getTokens() >= 0)
@@ -298,7 +298,7 @@ public class GameState {
 
         tailsymbol.playAction = new CardAction(){
             public void action(){
-                currPlanet = tailsymbol.owner.getCat().getPlanet();
+                Planet currPlanet = tailsymbol.owner.getCat().getPlanet();
                 if(currPlanet.getSymbol() = "Tail")
                 {
                     if(currPlanet.getTokens() >= 0)
@@ -321,7 +321,7 @@ public class GameState {
 
         pawsymbol.playAction = new CardAction(){
             public void action(){
-                currPlanet = pawsymbol.owner.getCat().getPlanet();
+                Planet currPlanet = pawsymbol.owner.getCat().getPlanet();
                 if(currPlanet.getSymbol() = "Paw")
                 {
                     if(currPlanet.getTokens() >= 0)
