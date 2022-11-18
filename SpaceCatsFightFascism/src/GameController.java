@@ -34,6 +34,7 @@ class GameController {
             {
                 gameState.setPlayerTurn(gameState.getPlayerTurn() + 1);
             }
+            gameState.setDiceRollCount(2 + (int) Math.floor(gameState.getFascismScale()/7));
             for(int i = 0; i < gameState.getDiceRollCount(); i++)
             {
                 i = i + gameState.getTokensRemoved();
@@ -51,7 +52,7 @@ class GameController {
 
             }
             gameState.setTokensRemoved(0);
-            gameState.setDiceRollCount(2 + (int) Math.floor(gameState.getFascismScale()/7));
+            
         }
     }
     // Increases the facism scale by 1
