@@ -23,6 +23,10 @@ public class Player {
         return deck;
     }
 
+    public void setDeck(Deck newDeck){
+        deck = newDeck;
+    }
+
     public int getPlayerNum(){
         return playerNum;
     }

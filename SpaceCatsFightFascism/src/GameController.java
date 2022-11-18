@@ -26,13 +26,15 @@ class GameController {
         actionCount--;
         if(actionCount == 0)
         {
-            if(gameState.getPlayerTurn() + 1 > gameState.getPlayers().length - 1)
+            if(gameState.getPlayerTurn() + 1 == gameState.getPlayers().length)
             {
                 gameState.setPlayerTurn(0);
+                actionCount = 3;
             }
             else
             {
                 gameState.setPlayerTurn(gameState.getPlayerTurn() + 1);
+                actionCount = 3;
             }
             for(int i = 0; i < gameState.getDiceRollCount(); i++)
             {
@@ -61,6 +63,7 @@ class GameController {
 
     // Rolls a single dice and returns the resulting value
     public int rollDice() {
+        randNumGenerator = new Random();
         return 1 + randNumGenerator.nextInt(12);
     }
 
@@ -139,7 +142,7 @@ class GameController {
                 return false;
             }
             outPlanet = gameState.getPlanetLayout()[currIndex[0] - 1][currIndex[1]];
-        }
+        }//RIGHT
         else if(direction == 3)
         {
             if(currIndex[1] + 1 > 3)
@@ -170,7 +173,7 @@ class GameController {
         if (planet.getTokens() < 0) {
             planet.setTokens(planet.getTokens() + 1);
             gameState.setTokensRemoved(gameState.getTokensRemoved() + 1);
-            actionCount--;
+            actionTaken();
             if(pCat.getAbilityCard().getName() == "Hacker")
             {
                 pCat.getAbilityCard().play();
@@ -182,16 +185,15 @@ class GameController {
 
     // Restock action for the current player
     public boolean restock() {
-        Deck deck = gameState.getPlayers()[gameState.getPlayerTurn()].getDeck();
 
-        if(deck.getSize() == 3)
+        if(gameState.getPlayers()[gameState.getPlayerTurn()].getDeck().getSize() == 3)
         {
             return false;
         }
         else
         {
-            while (deck.getCards().size() < 4) {
-                deck.addCard(drawResistCard());
+            while (gameState.getPlayers()[gameState.getPlayerTurn()].getDeck().getSize() < 4) {
+                gameState.getPlayers()[gameState.getPlayerTurn()].getDeck().addCard(drawResistCard());
             }
             actionTaken();
         }

@@ -124,7 +124,7 @@ public class DisplayUpdater extends Application {
         root.getChildren().addAll(gameElements.drawCats(gc.getGameState().getPlayers()));
 
         //Display turn info
-        root.getChildren().addAll(gameElements.displayCurrentTurn(gc.getGameState().getPlayerTurn()+1,gc.getActionCount()));
+        root.getChildren().addAll(gameElements.displayCurrentTurn(gc.getGameState().getPlayerTurn()+1,gc.getActionCount(),gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getCat().getScratchCount()));
 
         //Display game broadcast
         root.getChildren().addAll(gameMessage(broadcast));
@@ -164,7 +164,6 @@ public class DisplayUpdater extends Application {
                     broadcast = "You've reached the end of the galaxy! You can not move up!";
                 }
                 redisplay();
-                gc.actionTaken();
             }
         });
         // Travel Down
@@ -179,7 +178,6 @@ public class DisplayUpdater extends Application {
                     broadcast = "You've reached the end of the galaxy! You can not move down!";
                 }
                 redisplay();
-                gc.actionTaken();
             }
         });
         // Travel Left
@@ -214,7 +212,6 @@ public class DisplayUpdater extends Application {
         playerActions[4].setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("FIGHT BUTTON PRESSED");
                 boolean validFight =  gc.fight();
                 if(validFight){
                     broadcast = "Removed a Fascism Token from Current Planet!";

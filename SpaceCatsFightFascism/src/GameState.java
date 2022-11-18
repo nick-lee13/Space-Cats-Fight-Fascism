@@ -54,10 +54,10 @@ public class GameState {
 
         
         //SOMETHING WRONG WITH THESE METHODS!! STARTS INF LOOP
-        //resistDeck = initResistDeck();
-        //galaxyNewsDeck = initGalaxyNewsDeck();
-        //resistUsedDeck = new Deck(null);
-        //galaxyNewsUsedDeck = new Deck(null);
+        resistDeck = initResistDeck();
+        galaxyNewsDeck = initGalaxyNewsDeck();
+        resistUsedDeck = new Deck(null);
+        galaxyNewsUsedDeck = new Deck(null);
 
         liberatedFlagsUsed = 0;
         occupiedFlagsUsed = 0;
@@ -363,37 +363,43 @@ public class GameState {
         
         //honestly i should come up with better ways to add cards
         int n = 8;
-        while(n > 0)
+        while(n >= 0)
         {
             outDeck.addCard(liberation);
+            n--;
         }
         n = 6;
-        while(n > 0)
+        while(n >= 0)
         {
             outDeck.addCard(heal1);
+            n--;
         }
         n = 4;
-        while(n > 0)
+        while(n >= 0)
         {
             outDeck.addCard(heal2);
+            n--;
         }
         n = 5;
-        while(n > 0)
+        while(n >= 0)
         {
             outDeck.addCard(fascist2);
+            n--;
         }
         n = 3;
-        while(n > 0)
+        while(n >= 0)
         {
             outDeck.addCard(teleport);
+            n--;
         }
         n = 5;
-        while(n > 0)
+        while(n >= 0)
         {
             outDeck.addCard(whiskersymbol);
             outDeck.addCard(pawsymbol);
             outDeck.addCard(tailsymbol);
             outDeck.addCard(earsymbol);
+            n--;
         }
         outDeck.shuffle();
 
@@ -491,22 +497,20 @@ public class GameState {
         };
 
         int n = 10;
-        while(n > 0)
+        while(n >= 0)
         {
             outNewsDeck.addCard(scratch1);
+            n--;
         }
         n = 2;
-        while(n > 0)
+        while(n >= 0)
         {
             outNewsDeck.addCard(scratchlocal);
             outNewsDeck.addCard(discard);
+            n--;
         }
-        n = 1;
-        while(n > 0)
-        {
-            outNewsDeck.addCard(scratchscale);
-            outNewsDeck.addCard(scratch2);
-        }
+        outNewsDeck.addCard(scratchscale);
+        outNewsDeck.addCard(scratch2);
         outNewsDeck.shuffle();
 
         return outNewsDeck;
@@ -614,6 +618,10 @@ public class GameState {
         return diceRollCount;
     }
 
+    public void setDiceRollCount(int dice){
+        diceRollCount = dice;
+    }
+
     public void setPlayerTurn(int turn)
     {
         playerTurn = turn;
@@ -632,6 +640,10 @@ public class GameState {
     public void setTokensRemoved(int n)
     {
         tokensRemoved = n;
+    }
+
+    public int getTokensRemoved(){
+        return tokensRemoved;
     }
 
     public void setCatRoster(Cat[] cats)

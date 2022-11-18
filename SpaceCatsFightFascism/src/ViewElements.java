@@ -129,13 +129,13 @@ public class ViewElements {
     }
 
 	//Update Game info displayed
-    public Text[] displayCurrentTurn(int playerTurn, int actionsLeft){
+    public Text[] displayCurrentTurn(int playerTurn, int actionsLeft, int scratchCount){
         Text[] toAdd = new Text[2];
 
         Text currTurn = new Text();
         Text actionsRemain = new Text();
 
-        currTurn.setText("Current Turn: Player " + playerTurn);
+        currTurn.setText("Current Turn: Player " + playerTurn + " Scratch Count: " + scratchCount);
         actionsRemain.setText("Actions Remaining: " + actionsLeft);
 
         currTurn.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 15));
