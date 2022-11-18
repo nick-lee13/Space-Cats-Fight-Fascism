@@ -1,6 +1,8 @@
 import java.util.*;
 
 //Class GameState, reflecting the current state of the game at the current turn in the model.
+//this will likely be singleton in the future, and that will save a WHOLE LOT OF HEADACHES FOR ME when going for full implementation
+
 public class GameState {
 
     private int DEFAULT_PLAYERS = 2;
@@ -253,7 +255,7 @@ public class GameState {
         whiskersymbol.playAction = new CardAction(){
             public void action(){
                 Planet currPlanet = whiskersymbol.owner.getCat().getPlanet();
-                if(currPlanet.getSymbol() = "Whiskers")
+                if(currPlanet.getSymbol() == "Whiskers")
                 {
                     if(currPlanet.getTokens() >= 0)
                     {
@@ -276,7 +278,7 @@ public class GameState {
         earsymbol.playAction = new CardAction(){
             public void action(){
                 Planet currPlanet = earsymbol.owner.getCat().getPlanet();
-                if(currPlanet.getSymbol() = "Ears")
+                if(currPlanet.getSymbol() == "Ears")
                 {
                     if(currPlanet.getTokens() >= 0)
                     {
@@ -299,7 +301,7 @@ public class GameState {
         tailsymbol.playAction = new CardAction(){
             public void action(){
                 Planet currPlanet = tailsymbol.owner.getCat().getPlanet();
-                if(currPlanet.getSymbol() = "Tail")
+                if(currPlanet.getSymbol() == "Tail")
                 {
                     if(currPlanet.getTokens() >= 0)
                     {
@@ -322,7 +324,7 @@ public class GameState {
         pawsymbol.playAction = new CardAction(){
             public void action(){
                 Planet currPlanet = pawsymbol.owner.getCat().getPlanet();
-                if(currPlanet.getSymbol() = "Paw")
+                if(currPlanet.getSymbol() == "Paw")
                 {
                     if(currPlanet.getTokens() >= 0)
                     {
@@ -394,7 +396,7 @@ public class GameState {
             }
         }*/
 
-        Deck outDeck = new Deck(null);
+        Deck outNewsDeck = new Deck(null);
 
         Card discard = new GalacticNewsCard("Catnip is Criminalized");
         Card scratchlocal = new GalacticNewsCard("Cat Arrests on All Planets");
@@ -488,7 +490,7 @@ public class GameState {
             outNewsDeck.addCard(scratchscale);
             outNewsDeck.addCard(scratch2);
         }
-        outDeck.shuffle();
+        outNewsDeck.shuffle();
 
         return outDeck;
     }
@@ -600,7 +602,7 @@ public class GameState {
         fascismScale = scale;
     }
     
-    public void setPlayers(int inputPlayers)
+    public void setPlayers(Player[] inputPlayers)
     {
         players = inputPlayers;
     }
