@@ -80,6 +80,7 @@ class GameController {
         Card card = resistCards.getFirst();
         gameState.getResistDeck().removeCard(card);
 
+        System.out.println("CARD GAINED: "+card.getName());
         return card;
     }
 

@@ -59,6 +59,11 @@ public class GameState {
         resistUsedDeck = new Deck(null);
         galaxyNewsUsedDeck = new Deck(null);
 
+        for(int i = 0; i < players.length; i++){
+            players[i].getDeck().addCard(resistDeck.getCards().remove());
+            players[i].getDeck().addCard(resistDeck.getCards().remove());
+        }
+
         liberatedFlagsUsed = 0;
         occupiedFlagsUsed = 0;
 
