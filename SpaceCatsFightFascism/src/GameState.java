@@ -55,6 +55,7 @@ public class GameState {
         
         //SOMETHING WRONG WITH THESE METHODS!! STARTS INF LOOP
         resistDeck = initResistDeck();
+        System.out.println("Deck size is " + resistDeck.getSize());
         galaxyNewsDeck = initGalaxyNewsDeck();
         resistUsedDeck = new Deck(null);
         galaxyNewsUsedDeck = new Deck(null);
