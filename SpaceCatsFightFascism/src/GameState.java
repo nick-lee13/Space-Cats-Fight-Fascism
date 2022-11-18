@@ -418,13 +418,13 @@ public class GameState {
 
         scratchlocal.playAction = new CardAction(){
             public void action(){
-                Planet currplanet = players[playerTurn - 1].getCat().getPlanet();
+                Planet currPlanet = players[playerTurn - 1].getCat().getPlanet();
 
                 players[playerTurn - 1].getCat().getPlanet().setTokenCount(currplanet.getTokens() - 1);
 
                 for(int i = 0; i < players.length; i++)
                 {
-                    if(players[i].getCat().getPlanet() == currPlanet())
+                    if(players[i].getCat().getPlanet() == currPlanet)
                     {
                         players[i].getCat().setScratchCount(players[i].getCat().getScratchCount() + 1);
                     }
@@ -436,13 +436,13 @@ public class GameState {
 
         scratchscale.playAction = new CardAction(){
             public void action(){
-                Planet currplanet = players[playerTurn - 1].getCat().getPlanet();
+                Planet currPlanet = players[playerTurn - 1].getCat().getPlanet();
 
                 players[playerTurn - 1].getCat().getPlanet().setTokenCount(currplanet.getTokens() - 1);
 
                 for(int i = 0; i < players.length; i++)
                 {
-                    if(players[i].getCat().getPlanet() == currPlanet())
+                    if(players[i].getCat().getPlanet() == currPlanet)
                     {
                         players[i].getCat().setScratchCount(players[i].getCat().getScratchCount() + 1);
                     }
@@ -492,7 +492,7 @@ public class GameState {
         }
         outNewsDeck.shuffle();
 
-        return outDeck;
+        return outNewsDeck;
     }
 
     //Initialize the starting tokens at the start of the game

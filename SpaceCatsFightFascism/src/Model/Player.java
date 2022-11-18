@@ -2,7 +2,7 @@ public class Player {
     Cat cat;
     Deck deck;
     int playerNum;
-
+    int actions;
     public Player(int playerNum, Cat cat) {
             this.cat = cat;
             deck = new Deck(this);
@@ -11,9 +11,9 @@ public class Player {
     }
 
 
-    public int getInput() {
+    /*public int getInput(int action, Object subject) {
             return 1;
-    }
+    }*/
 
     public Cat getCat() {
         return cat;
