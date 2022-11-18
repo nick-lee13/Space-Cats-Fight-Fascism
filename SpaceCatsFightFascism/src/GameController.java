@@ -67,7 +67,7 @@ class GameController {
     // Travel action for the current player
     public void travel(Planet planet) {
         Cat cat = gameState.getPlayers()[gameState.getPlayerTurn()].getCat();
-        cat.setPLanet(planet);
+        cat.setPlanet(planet);
     }
 
     // Fight action for the current player

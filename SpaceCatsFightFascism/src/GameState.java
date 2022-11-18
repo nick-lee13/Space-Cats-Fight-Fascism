@@ -43,7 +43,7 @@ public class GameState {
         catRoster = initCatRoster();
         for(int i = 0; i < players.length; i++)
         {
-            players[i] = new Player(catRoster[i])
+            players[i] = new Player(i,catRoster[i]);
         }
         //edit above for when it is not restricted
 
@@ -57,7 +57,7 @@ public class GameState {
         liberatedFlagsUsed = 0;
         occupiedFlagsUsed = 0;
 
-        FascistTokenCount = 0;
+        fascistTokenCount = 0;
         initTokens();
         
 
@@ -68,7 +68,7 @@ public class GameState {
     //places a token on the inputted planet id, increments amount of tokens
     public void placeLibToken(Planet planet)
     {
-        int current_token = planet.getTokenCount();
+        int current_token = planet.getTokens();
         planet.setTokenCount(current_token + 1);
         fascistTokenCount--;
     }
@@ -76,7 +76,7 @@ public class GameState {
     //Places a fascist token at the given planet.
     public void placeFascistToken(Planet planet)
     {
-        int current_token = planet.getTokenCount();
+        int current_token = planet.getTokens();
         planet.setTokenCount(current_token - 1);
         fascistTokenCount++;
     }
@@ -84,7 +84,7 @@ public class GameState {
     //initializes the roster of cats available for the game
     private Cat[] initCatRoster()
     {
-        roster = new Cat[4];
+        catRoster = new Cat[4];
 
         Cat aliasSC, pipSC, jasperSC, opheliaSC;
 
@@ -124,16 +124,16 @@ public class GameState {
         opheliaSC = new Cat("Ophelia", 4, ophelia);
 
         aliasSC.setPlanet(findPlanet(3));
-        pip.setPlanet(findPlanet(8));
-        jasper.setPlanet(findPlanet(6));
-        ophelia.setPlanet(findPlanet(4));
+        pipSC.setPlanet(findPlanet(8));
+        jasperSC.setPlanet(findPlanet(6));
+        opheliaSC.setPlanet(findPlanet(4));
 
-        roster[0] = aliasSC;
-        roster[1] = pip;
-        roster[2] = jasper;
-        roster[3] = ophelia;
+        catRoster[0] = aliasSC;
+        catRoster[1] = pipSC;
+        catRoster[2] = jasperSC;
+        catRoster[3] = opheliaSC;
 
-        return roster;
+        return catRoster;
     }
 
     //initializes the resist card deck, these deck initializations can hopefully be done better or moved in the future
