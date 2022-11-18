@@ -106,7 +106,7 @@ public class GameState {
                 //when fightfascism is called by a player with this cat as their cat, have an option that plays their abilitycard
                 if(players[playerTurn].getDeck().getSize() < 3)
                 {
-                    if(resistCards.getSize() != 0)
+                    if(resistDeck.getSize() != 0)
                     {
                         players[playerTurn].addCard(resistDeck.removeCard(resistCards.getFirst()));
                     }

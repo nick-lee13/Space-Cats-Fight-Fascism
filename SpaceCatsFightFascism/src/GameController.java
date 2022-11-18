@@ -51,7 +51,7 @@ class GameController {
 
             }
             gameState.setTokensRemoved(0);
-            gameState.setRollDiceCount(2 + (int) Math.floor(gameState.getFascismScale()/7));
+            gameState.setDiceRollCount(2 + (int) Math.floor(gameState.getFascismScale()/7));
         }
     }
     // Increases the facism scale by 1
@@ -113,6 +113,7 @@ class GameController {
         int[] currIndex = currPlanet.getIndex();
         Planet outPlanet;
         //oh boy is this ever not scalable
+        //DOWN
         if(direction == 0)
         {
             if(currIndex[0] + 1 > 2)
@@ -121,17 +122,19 @@ class GameController {
             }
             outPlanet = gameState.getPlanetLayout()[currIndex[0] + 1][currIndex[1]];
         }
+        //LEFT
         else if(direction == 1)
         {
-            if(currIndex[0] - 1 < 0)
+            if(currIndex[1] - 1 < 0)
             {
                 return false;
             }
             outPlanet = gameState.getPlanetLayout()[currIndex[0]][currIndex[1] - 1];
         }
+        //UP
         else if(direction == 2)
         {   
-            if(currIndex[1] - 1 < 0)
+            if(currIndex[0] - 1 < 0)
             {
                 return false;
             }
@@ -157,15 +160,15 @@ class GameController {
     //will likely move this to be a method in the cat class that the individual cats can override if necessary in the future
     //because i KNOW these if statements are smelly
     public boolean fight() {
-        Cat pCat = gameState.getPlayers()[gameState.getPlayerTurn()].getCat()
+        Cat pCat = gameState.getPlayers()[gameState.getPlayerTurn()].getCat();
         Planet planet = pCat.getPlanet();
         if(pCat.getAbilityCard().getName() == "Laser Eyes")
         {
-            planet = planet;
+            //planet = planet;
             // ADD PLANET CHOOSING FUNCTIONALITY
         }
         if (planet.getTokens() < 0) {
-            planet.setTokenCount(planet.getTokens() + 1);
+            planet.setTokens(planet.getTokens() + 1);
             gameState.setTokensRemoved(gameState.getTokensRemoved() + 1);
             actionCount--;
             if(pCat.getAbilityCard().getName() == "Hacker")
@@ -206,6 +209,10 @@ class GameController {
         actionTaken();
         //add code here that removes the card from the players hand somehow
         //or add the code in the action that leads to this action, whatever works
+    }
+
+    public int getActionCount(){
+        return actionCount;
     }
 
     public void startGame() {

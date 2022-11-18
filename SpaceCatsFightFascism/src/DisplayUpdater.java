@@ -124,9 +124,7 @@ public class DisplayUpdater extends Application {
         root.getChildren().addAll(gameElements.drawCats(gc.getGameState().getPlayers()));
 
         //Display turn info
-        root.getChildren().addAll(gameElements.displayCurrentTurn(gc.getGameState().getPlayerTurn(),gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getActionsRemaining()));
-        //gc.getGameState().getPlayerTurn()
-        //gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getActionsRemaining()
+        root.getChildren().addAll(gameElements.displayCurrentTurn(gc.getGameState().getPlayerTurn()+1,gc.getActionCount()));
 
         //Display game broadcast
         root.getChildren().addAll(gameMessage(broadcast));
@@ -158,71 +156,56 @@ public class DisplayUpdater extends Application {
         playerActions[0].setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("TRAVEL UP BUTTON PRESSED");
-                cat1.setPlanet(plan1);
-                System.out.println(root.getChildren().size());
-                broadcast = "This is a test! blah blah blah blah blah!";
-                redisplay();
-
-                /*boolean validMove = gc.travel(2);
+                boolean validMove = gc.travel(2);
                 if(validMove){
-                    gameMessage("Move Up Successful!");
+                    broadcast = "Move Up Successful!";
                 }
                 else{
-                    gameMessage("You've reached the end of the galaxy! You can not move up!");
+                    broadcast = "You've reached the end of the galaxy! You can not move up!";
                 }
-                redisplay();*/
+                redisplay();
             }
         });
         // Travel Down
         playerActions[1].setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("TRAVEL DOWN BUTTON PRESSED");
-                cat1.setPlanet(plan2);
-                broadcast = "You pressed down button!";
-                redisplay();
-
-                /*boolean validMove = gc.travel(0);
+                boolean validMove = gc.travel(0);
                 if(validMove){
-                    gameMessage("Move Down Successful!");
+                    broadcast = "Move Down Successful!";
                 }
                 else{
-                    gameMessage("You've reached the end of the galaxy! You can not move Down!");
+                    broadcast = "You've reached the end of the galaxy! You can not move down!";
                 }
-                redisplay();*/
+                redisplay();
             }
         });
         // Travel Left
         playerActions[2].setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("TRAVEL LEFT BUTTON PRESSED");
-
-                /*boolean validMove = gc.travel(1);
+                boolean validMove = gc.travel(1);
                 if(validMove){
-                    gameMessage("Move Left Successful!");
+                    broadcast = "Move Left Successful!";
                 }
                 else{
-                    gameMessage("You've reached the end of the galaxy! You can not move Left!");
+                    broadcast = "You've reached the end of the galaxy! You can not move left!";
                 }
-                redisplay();*/
+                redisplay();
             }
         });
         // Travel Right
         playerActions[3].setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("TRAVEL RIGHT BUTTON PRESSED");
-
-                /*boolean validMove = gc.travel(3);
+                boolean validMove = gc.travel(3);
                 if(validMove){
-                    gameMessage("Move Right Successful!");
+                    broadcast = "Move Right Successful!";
                 }
                 else{
-                    gameMessage("You've reached the end of the galaxy! You can not move Right!");
+                    broadcast = "You've reached the end of the galaxy! You can not move right!";
                 }
-                redisplay();*/
+                redisplay();
             }
         });
         // Fight Fascism
@@ -230,7 +213,7 @@ public class DisplayUpdater extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("FIGHT BUTTON PRESSED");
-                boolean validFight =  true;//gc.fight();
+                boolean validFight =  gc.fight();
                 if(validFight){
                     broadcast = "Removed a Fascism Token from Current Planet!";
                 }
@@ -284,8 +267,8 @@ public class DisplayUpdater extends Application {
             @Override
             public void handle(MouseEvent t) {
                 System.out.println("RESIST 0 PICKED");
-                Card toUse = gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getDeck().getCards().get(0);
-                gc.playCard(toUse);
+                //Card toUse = gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getDeck().getCards().get(0);
+                //gc.playCard(toUse);
             }
         });
         cardActions[1].setOnMouseClicked(new EventHandler<MouseEvent>()
