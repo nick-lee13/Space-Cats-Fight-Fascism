@@ -86,7 +86,7 @@ public class GameState {
     {
         roster = new Cat[4];
 
-        Cat aliasSC, pip, jasper, ophelia;
+        Cat aliasSC, pipSC, jasperSC, opheliaSC;
 
         AbilityCard alias = new Card("Hacker");
         AbilityCard pip = new Card("Freedom Fighter");
@@ -119,9 +119,9 @@ public class GameState {
         };
 
         aliasSC = new Cat("Alias:SC", 3, alias);
-        pip = new Cat("Pip", 8, pip);
-        jasper = new Cat("Jasper", 6, jasper);
-        ophelia = new Cat("Ophelia", 4, ophelia);
+        pipSC = new Cat("Pip", 8, pip);
+        jasperSC = new Cat("Jasper", 6, jasper);
+        opheliaSC = new Cat("Ophelia", 4, ophelia);
 
         aliasSC.setPlanet(findPlanet(3));
         pip.setPlanet(findPlanet(8));
