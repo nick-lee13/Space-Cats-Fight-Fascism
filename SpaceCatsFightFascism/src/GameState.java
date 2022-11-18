@@ -420,7 +420,7 @@ public class GameState {
             public void action(){
                 Planet currPlanet = players[playerTurn].getCat().getPlanet();
 
-                players[playerTurn].getCat().getPlanet().setTokenCount(currplanet.getTokens() - 1);
+                players[playerTurn].getCat().getPlanet().setTokenCount(currPlanet.getTokens() - 1);
 
                 for(int i = 0; i < players.length; i++)
                 {
@@ -438,7 +438,7 @@ public class GameState {
             public void action(){
                 Planet currPlanet = players[playerTurn - 1].getCat().getPlanet();
 
-                players[playerTurn].getCat().getPlanet().setTokenCount(currplanet.getTokens() - 1);
+                players[playerTurn].getCat().getPlanet().setTokenCount(currPlanet.getTokens() - 1);
 
                 for(int i = 0; i < players.length; i++)
                 {
