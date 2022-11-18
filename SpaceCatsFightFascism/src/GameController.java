@@ -155,14 +155,23 @@ class GameController {
 
     // Fight action for the current player
     //will likely move this to be a method in the cat class that the individual cats can override if necessary in the future
+    //because i KNOW these if statements are smelly
     public boolean fight() {
         Cat pCat = gameState.getPlayers()[gameState.getPlayerTurn()].getCat()
         Planet planet = pCat.getPlanet();
-        if(pCat.getAbilityCard())
+        if(pCat.getAbilityCard().getName() == "Laser Eyes")
+        {
+            planet = planet;
+            // ADD PLANET CHOOSING FUNCTIONALITY
+        }
         if (planet.getTokens() < 0) {
             planet.setTokenCount(planet.getTokens() + 1);
             gameState.setTokensRemoved(gameState.getTokensRemoved() + 1);
             actionCount--;
+            if(pCat.getAbilityCard().getName() == "Hacker")
+            {
+                pCat.getAbilityCard().play();
+            }
             return true;
         }
         return false;
