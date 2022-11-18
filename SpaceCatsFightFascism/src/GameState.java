@@ -106,7 +106,7 @@ public class GameState {
                 //when fightfascism is called by a player with this cat as their cat, have an option that plays their abilitycard
                 if(players[playerTurn].getDeck().getSize() < 3)
                 {
-                    if(resistDeck.getSize() != 0)
+                    if(resistCards.getSize() != 0)
                     {
                         players[playerTurn].addCard(resistDeck.removeCard(resistCards.getFirst()));
                     }
@@ -612,15 +612,6 @@ public class GameState {
     public int getDiceRollCount()
     {
         return diceRollCount;
-    }
-
-    public int getTokensRemoved()
-    {
-        return tokensRemoved;
-    }
-
-    public void setDiceRollCount(int diceNum){
-        diceRollCount = diceNum;
     }
 
     public void setPlayerTurn(int turn)

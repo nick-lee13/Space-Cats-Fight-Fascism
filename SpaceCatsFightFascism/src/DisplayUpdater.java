@@ -164,6 +164,7 @@ public class DisplayUpdater extends Application {
                     broadcast = "You've reached the end of the galaxy! You can not move up!";
                 }
                 redisplay();
+                gc.actionTaken();
             }
         });
         // Travel Down
@@ -178,6 +179,7 @@ public class DisplayUpdater extends Application {
                     broadcast = "You've reached the end of the galaxy! You can not move down!";
                 }
                 redisplay();
+                gc.actionTaken();
             }
         });
         // Travel Left
@@ -228,7 +230,7 @@ public class DisplayUpdater extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("RESTOCK BUTTON PRESSED");
-                boolean validRestock = true;//gc.restock();
+                boolean validRestock = gc.restock();
                 if(validRestock){
                     broadcast = "Successfully Restocked Resist Cards!";
                 }
