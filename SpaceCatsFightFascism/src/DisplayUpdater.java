@@ -108,7 +108,7 @@ public class DisplayUpdater extends Application {
 
     public void redisplay(){
         if(!firstRun){
-            root.getChildren().remove(23, 55);
+            root.getChildren().remove(24, 56);
         }
         else{
             firstRun = false;
@@ -157,20 +157,20 @@ public class DisplayUpdater extends Application {
         playerActions[0].setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                /*System.out.println("TRAVEL UP BUTTON PRESSED");
+                System.out.println("TRAVEL UP BUTTON PRESSED");
                 cat1.setPlanet(plan1);
                 System.out.println(root.getChildren().size());
                 broadcast = "This is a test! blah blah blah blah blah!";
-                redisplay();*/
+                redisplay();
 
-                boolean validMove = gc.travel(0);
+                /*boolean validMove = gc.travel(2);
                 if(validMove){
                     gameMessage("Move Up Successful!");
                 }
                 else{
                     gameMessage("You've reached the end of the galaxy! You can not move up!");
                 }
-                redisplay();
+                redisplay();*/
             }
         });
         // Travel Down
@@ -182,7 +182,7 @@ public class DisplayUpdater extends Application {
                 broadcast = "You pressed down button!";
                 redisplay();
 
-                /*boolean validMove = gc.travel(2);
+                /*boolean validMove = gc.travel(0);
                 if(validMove){
                     gameMessage("Move Down Successful!");
                 }
@@ -197,6 +197,15 @@ public class DisplayUpdater extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("TRAVEL LEFT BUTTON PRESSED");
+
+                /*boolean validMove = gc.travel(1);
+                if(validMove){
+                    gameMessage("Move Left Successful!");
+                }
+                else{
+                    gameMessage("You've reached the end of the galaxy! You can not move Left!");
+                }
+                redisplay();*/
             }
         });
         // Travel Right
@@ -204,6 +213,15 @@ public class DisplayUpdater extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("TRAVEL RIGHT BUTTON PRESSED");
+
+                /*boolean validMove = gc.travel(3);
+                if(validMove){
+                    gameMessage("Move Right Successful!");
+                }
+                else{
+                    gameMessage("You've reached the end of the galaxy! You can not move Right!");
+                }
+                redisplay();*/
             }
         });
         // Fight Fascism
@@ -211,7 +229,14 @@ public class DisplayUpdater extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("FIGHT BUTTON PRESSED");
-                gc.fight();
+                boolean validFight =  true;//gc.fight();
+                if(validFight){
+                    broadcast = "Removed a Fascism Token from Current Planet!";
+                }
+                else{
+                    broadcast = "There are no fascism tokens to remove here!";
+                }
+                redisplay();
             }
         });
         // Restock Resist Cards
@@ -219,7 +244,14 @@ public class DisplayUpdater extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("RESTOCK BUTTON PRESSED");
-                gc.restock();
+                boolean validRestock = true;//gc.restock();
+                if(validRestock){
+                    broadcast = "Successfully Restocked Resist Cards!";
+                }
+                else{
+                    broadcast = "Your hand is full! You can not restock!";
+                }
+                redisplay();
             }
         });
         //Use Resist Card
@@ -227,6 +259,8 @@ public class DisplayUpdater extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("RESIST BUTTON PRESSED");
+                broadcast = "Please select a resist card in the Left Menu to use!";
+                redisplay();
             }
         });
         //End Turn (early)
@@ -234,7 +268,9 @@ public class DisplayUpdater extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("END BUTTON PRESSED");
+                broadcast = "Turn Ended! Next player is up!";
                 //AWAITING END TURN EARLY IMPLEMENTATION
+                redisplay();
             }
         });
         return playerActions;
@@ -247,6 +283,8 @@ public class DisplayUpdater extends Application {
             @Override
             public void handle(MouseEvent t) {
                 System.out.println("RESIST 0 PICKED");
+                Card toUse = gc.getGameState().getPlayers()[gc.getGameState().getPlayerTurn()].getDeck().getCards().get(0);
+                gc.playCard(toUse);
             }
         });
         cardActions[1].setOnMouseClicked(new EventHandler<MouseEvent>()
