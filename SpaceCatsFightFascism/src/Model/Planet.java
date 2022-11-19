@@ -1,6 +1,7 @@
 
 
 public class Planet {
+
     int id;
     int tokenCount;
     String symbol;
@@ -8,6 +9,7 @@ public class Planet {
     int x,y;
     boolean liberated;
     boolean occupied;
+    
     public Planet(int inId, int index, int indey) {
             id = inId;
             tokenCount = 0;
